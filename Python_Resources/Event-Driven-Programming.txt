@@ -1,0 +1,109 @@
+Event-Driven Programming
+Event-driven programming is a programming paradigm where the flow of execution is determined by events, such as user actions (mouse clicks, keyboard presses), sensor outputs, or messages from other programs.
+
+Many modern applications, including GUIs, game development, and web applications, use event-driven programming.
+----------------------------------
+#Example 1: Event-Driven GUI with Tkinter
+#This example creates a simple GUI button that responds to a click event.
+
+import tkinter as tk
+
+def on_button_click():
+    print("Button clicked!")
+
+# Create the main window
+root = tk.Tk()
+root.title("Event-Driven Example")
+
+# Create a button and bind it to the event
+button = tk.Button(root, text="Click Me", command=on_button_click)
+button.pack()
+
+# Run the event loop
+root.mainloop()
+......................................................
+
+#Example 2: Keyboard Event Listener
+#This example listens for keyboard events and prints the key pressed.
+
+import keyboard  # Install using: pip install keyboard
+
+def on_key_event(event):
+    print(f"Key {event.name} pressed")
+
+# Hook the function to key press events
+keyboard.on_press(on_key_event)
+
+# Keep the script running
+keyboard.wait("esc")  # Stops when 'esc' is pressed
+................................................
+
+#Example 3: Event-Driven Programming with Observer Pattern
+#This example shows how custom event handling works using the Observer Pattern.
+
+class Event:
+    def __init__(self):
+        self.subscribers = []
+
+    def subscribe(self, callback):
+        self.subscribers.append(callback)
+
+    def trigger(self, data):
+        for callback in self.subscribers:
+            callback(data)
+
+# Event handler function
+def event_listener(data):
+    print(f"Event received with data: {data}")
+
+# Create an event and subscribe to it
+my_event = Event()
+my_event.subscribe(event_listener)
+
+# Trigger the event
+my_event.trigger("Hello, Event-Driven World!")
+................................................
+
+#Example 4: Event Handling in Pygame (Game Development)
+#This example captures keyboard and quit events in a simple game loop.
+
+
+import pygame
+
+pygame.init()
+screen = pygame.display.set_mode((400, 300))
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            print(f"Key {event.key} pressed")
+
+pygame.quit()
+
+..................................................
+#Example 5: Event Handling with asyncio (Asynchronous Events)
+
+import asyncio
+
+async def event_handler():
+    print("Event triggered")
+    await asyncio.sleep(2)
+    print("Event processed")
+
+async def main():
+    print("Waiting for event...")
+    await event_handler()
+    print("Done")
+
+asyncio.run(main())
+......................................
+
+Where is Event-Driven Programming Used?
+✔ GUI Applications (Tkinter, PyQt)
+✔ Game Development (Pygame)
+✔ Web Development (JavaScript, Flask, Django)
+✔ IoT and Robotics (Sensor data handling)
+✔ Networking and Messaging Systems (RabbitMQ, Kafka)

@@ -1,0 +1,88 @@
+Descriptors are Python objects that manage the behavior of attribute access. They allow you to control how attributes are retrieved, set, and deleted in a class. Descriptors are implemented using special methods:
+
+__get__(self, instance, owner): Controls attribute access.
+__set__(self, instance, value): Controls attribute assignment.
+__delete__(self, instance): Controls attribute deletion.
+Descriptors are often used in property management, data validation, and implementing frameworks like Django ORM.
+--------------------
+Uses:
+To validate data before setting attributes.
+To implement computed properties dynamically.
+To add logging, caching, or transformation logic to attributes.
+Used in frameworks like Django ORM for managing model fields.
+----------------------------
+
+
+#A Simple Read-Only Descriptor
+#This descriptor allows reading the value but prevents modification.
+
+class ReadOnlyDescriptor:
+    def __init__(self, value):
+        self._value = value
+
+    def __get__(self, instance, owner):
+        return self._value
+
+    def __set__(self, instance, value):
+        raise AttributeError("This attribute is read-only")
+
+class MyClass:
+    attr = ReadOnlyDescriptor(100)
+
+obj = MyClass()
+print(obj.attr)  # Output: 100
+obj.attr = 200   # Raises AttributeError: This attribute is read-only
+
+............................................
+#Data Validation with a Descriptor
+#This descriptor ensures an attribute is always a positive integer.
+
+class PositiveInteger:
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__.get(self.name, 0)
+
+    def __set__(self, instance, value):
+        if not isinstance(value, int) or value <= 0:
+            raise ValueError(f"{self.name} must be a positive integer")
+        instance.__dict__[self.name] = value
+
+class Product:
+    price = PositiveInteger("price")
+
+    def __init__(self, price):
+        self.price = price
+
+item = Product(50)
+print(item.price)  # Output: 50
+item.price = -10   # Raises ValueError: price must be a positive integer
+
+........................
+#A Logging Descriptor
+#This descriptor logs every time an attribute is accessed.
+
+
+class LoggedAttribute:
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        print(f"Accessing {self.name}")
+        return instance.__dict__.get(self.name, None)
+
+    def __set__(self, instance, value):
+        print(f"Setting {self.name} to {value}")
+        instance.__dict__[self.name] = value
+
+class Person:
+    name = LoggedAttribute("name")
+
+    def __init__(self, name):
+        self.name = name
+
+p = Person("Alice")
+print(p.name)  # Logs: Accessing name, Output: Alice
+p.name = "Bob" # Logs: Setting name to Bob
+print(p.name)  # Logs: Accessing name, Output: Bob

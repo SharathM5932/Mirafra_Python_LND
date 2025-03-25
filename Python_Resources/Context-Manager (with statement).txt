@@ -1,0 +1,92 @@
+Context Manager (with statement)
+A context manager in Python is used to manage resources efficiently using the with statement. It ensures that resources like files, database connections, or network sockets are properly opened and closed, even if an exception occurs.
+
+The with statement simplifies resource management by automatically handling setup and cleanup.
+------------------------------------------------
+
+#Example 1: Using with for File Handling
+#The most common use case of the with statement is file handling.
+
+# Using 'with' to open a file
+with open("example.txt", "w") as file:
+    file.write("Hello, Context Manager!")
+
+# No need to explicitly call file.close()
+..........................................................
+
+#Example 2: Custom Context Manager Using a Class
+#You can create a custom context manager by defining __enter__ and __exit__ methods.
+
+class MyContextManager:
+    def __enter__(self):
+        print("Entering the context")
+        return self  # This value is assigned to 'as' variable in 'with'
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting the context")
+        if exc_type:
+            print(f"Exception occurred: {exc_value}")
+        return True  # Suppresses exception if True
+
+# Using the custom context manager
+with MyContextManager() as cm:
+    print("Inside the context")
+    # Uncomment the next line to see exception handling
+    # raise ValueError("Something went wrong!")
+..........................................
+
+#Example 3: Using contextlib for a Simpler Context Manager
+#Instead of writing a class, we can use the contextlib module.
+
+from contextlib import contextmanager
+
+@contextmanager
+def my_context():
+    print("Entering context")
+    yield  # Code before 'yield' runs before the 'with' block
+    print("Exiting context")  # Runs after the 'with' block
+
+with my_context():
+    print("Inside context")
+.......................................................
+
+#Example 4: Using with for Database Connections
+#Databases require proper connection management.
+
+import sqlite3
+
+with sqlite3.connect("example.db") as conn:
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT)")
+    cursor.execute("INSERT INTO users VALUES (1, 'Alice')")
+    conn.commit()
+
+# Connection automatically closed
+......................................................
+
+#Example 5: Using with for Lock Management in Multithreading
+#Context managers help manage locks in multithreading to prevent race conditions.
+
+import threading
+
+lock = threading.Lock()
+
+def critical_section():
+    with lock:
+        print(f"{threading.current_thread().name} is in critical section")
+        # Critical code here
+
+thread1 = threading.Thread(target=critical_section)
+thread2 = threading.Thread(target=critical_section)
+
+thread1.start()
+thread2.start()
+thread1.join()
+thread2.join()
+.............................................
+
+Key Benefits of Using Context Managers (with statement)
+✔ Automatic resource cleanup (no need for explicit .close()).
+✔ Exception safety (resources are released even if an error occurs).
+✔ Cleaner and more readable code.
+✔ Useful for file handling, database connections, multithreading, and more.

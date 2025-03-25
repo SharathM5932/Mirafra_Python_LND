@@ -1,0 +1,85 @@
+Type Hinting and Static Typing in Python
+Type hinting in Python allows you to specify the expected types of function arguments and return values. While Python is dynamically typed, type hints help with code readability, debugging, and static analysis using tools like mypy.
+
+Python introduced type hints in PEP 484, and they are purely optional.
+------------------------------
+
+#Example 1: Type Hinting for Function Arguments and Return Type
+
+def add_numbers(a: int, b: int) -> int:
+    return a + b
+
+result = add_numbers(5, 10)
+print(result)  # Output: 15
+#a: int and b: int specify that both arguments should be integers.
+#-> int specifies that the function returns an integer.
+
+......................................
+#Example 2: Type Hinting with Lists and Tuples
+from typing import List, Tuple
+
+def process_numbers(numbers: List[int]) -> Tuple[int, int]:
+    total = sum(numbers)
+    count = len(numbers)
+    return total, count
+
+data = [1, 2, 3, 4, 5]
+print(process_numbers(data))  # Output: (15, 5)
+#List[int] means numbers should be a list of integers.
+#Tuple[int, int] means the function returns a tuple containing two integers.
+
+...........................................
+#Example 3: Type Hinting for Classes and Methods
+class Person:
+    def __init__(self, name: str, age: int):
+        self.name: str = name
+        self.age: int = age
+
+    def greet(self) -> str:
+        return f"Hello, my name is {self.name} and I am {self.age} years old."
+
+p = Person("Alice", 30)
+print(p.greet())  # Output: Hello, my name is Alice and I am 30 years old.
+#Here, we use type hints for attributes and methods in a class.
+...............................................
+
+#Example 4: Type Hinting with Optional and Union
+from typing import Optional, Union
+
+def get_length(value: Optional[Union[str, list]]) -> int:
+    if value is None:
+        return 0
+    return len(value)
+
+print(get_length("Hello"))   # Output: 5
+print(get_length([1, 2, 3])) # Output: 3
+print(get_length(None))      # Output: 0
+#Optional[Union[str, list]] means the function accepts either a string, a list, or None.
+#Optional[T] is shorthand for Union[T, None].
+
+.................................................
+#Example 5: Static Type Checking with mypy
+Python remains dynamically typed at runtime, but you can check types statically using mypy.
+-----------------------
+#Step 1: Save this code in example.py
+
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+result = multiply(5, "hello")  # Error: str is not an int
+print(result)
+----------------------------
+#Step 2: Run mypy in the terminal
+
+mypy example.py
+-----------------
+#Without type checking, this would raise an error only at runtime.
+#With mypy, you get a static error:
+error: Argument 2 to "multiply" has incompatible type "str"; expected "int"
+.......................................
+
+Benefits of Type Hinting and Static Typing
+✔ Improves code readability and maintainability
+✔ Catches errors early with tools like mypy
+✔ Helps IDEs provide better auto-completion and error detection
+✔ Enhances team collaboration with clear function signatures

@@ -1,0 +1,48 @@
+Async IO (Asynchronous Input/Output) in Python is a programming paradigm that allows for concurrent execution of tasks without blocking the main thread. It is useful for handling I/O-bound operations like network requests, database queries, or file operations where waiting for a response can slow down performance.
+
+Python provides the asyncio module to work with asynchronous programming using async and await keywords.
+
+#Async Function with Sleep
+
+import asyncio
+
+async def greet():
+    print("Hello")
+    await asyncio.sleep(2)  # Simulating an async task
+    print("World")
+
+async def main():
+    await greet()
+
+asyncio.run(main())
+
+Output:
+
+Edit
+Hello
+
+.........................
+#Running Multiple Async Tasks
+import asyncio
+
+async def task1():
+    print("Task 1 started")
+    await asyncio.sleep(3)
+    print("Task 1 completed")
+
+async def task2():
+    print("Task 2 started")
+    await asyncio.sleep(1)
+    print("Task 2 completed")
+
+async def main():
+    await asyncio.gather(task1(), task2())  # Runs tasks concurrently
+
+asyncio.run(main())
+
+Output:
+
+Task 1 started
+Task 2 started
+Task 2 completed  (after 1 sec)
+Task 1 completed  (after 3 sec)

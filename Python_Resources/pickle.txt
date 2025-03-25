@@ -1,0 +1,111 @@
+#create a file wrt pickle, dump dict content, fetch back data again
+import pickle
+ex={1:"2",2:'a', 3:'c'}
+a=open('dee.pickle','wb')
+pickle.dump(ex,a)
+a.close()
+................
+b=open('dee.pickle', 'rb')
+d=pickle.load(b)
+print(ex)
+print(ex[2])
+....................................
+Pickling and Unpickling in Python
+Pickling is the process of serializing Python objects into a byte stream so they can be saved to a file or transferred over a network.
+Unpickling is the process of deserializing that byte stream back into a Python object.
+
+Key Notes on Pickling and Unpickling
+✔ Use cases: Saving models in ML, caching data, transferring data across networks.
+✔ Limitations: Only works in Python, not human-readable, can be insecure if loading untrusted files.
+✔ Safer alternative: Use JSON for simpler data structures like dictionaries and lists.
+
+-----------------------------------------
+
+#Example 1: Pickling and Unpickling a Dictionary
+
+import pickle
+
+# Dictionary to pickle
+data = {"name": "Alice", "age": 25, "city": "New York"}
+
+# Pickling (Saving the object to a file)
+with open("data.pkl", "wb") as file:
+    pickle.dump(data, file)
+
+# Unpickling (Loading the object from the file)
+with open("data.pkl", "rb") as file:
+    loaded_data = pickle.load(file)
+
+print(loaded_data)  # Output: {'name': 'Alice', 'age': 25, 'city': 'New York'}
+
+.......................................
+#Example 2: Pickling and Unpickling a Python Class Object
+import pickle
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        return f"Hello, my name is {self.name} and I am {self.age} years old."
+
+# Creating an object
+person = Person("Bob", 30)
+
+# Pickling the object
+with open("person.pkl", "wb") as file:
+    pickle.dump(person, file)
+
+# Unpickling the object
+with open("person.pkl", "rb") as file:
+    loaded_person = pickle.load(file)
+
+print(loaded_person.greet())  # Output: Hello, my name is Bob and I am 30 years old.
+.................................................
+
+#Example 3: Pickling and Unpickling a List
+
+import pickle
+
+# List to pickle
+numbers = [10, 20, 30, 40, 50]
+
+# Pickling
+pickled_numbers = pickle.dumps(numbers)  # Serializing to a bytes object
+
+# Unpickling
+unpickled_numbers = pickle.loads(pickled_numbers)  # Deserializing from bytes
+
+print(unpickled_numbers)  # Output: [10, 20, 30, 40, 50]
+....................................................
+
+#Example 4: Pickling Multiple Objects in One File
+
+import pickle
+
+# Multiple objects to pickle
+data1 = {"a": 1, "b": 2}
+data2 = ["apple", "banana", "cherry"]
+
+# Pickling multiple objects
+with open("multi.pkl", "wb") as file:
+    pickle.dump(data1, file)
+    pickle.dump(data2, file)
+
+# Unpickling multiple objects
+with open("multi.pkl", "rb") as file:
+    loaded_data1 = pickle.load(file)
+    loaded_data2 = pickle.load(file)
+
+print(loaded_data1)  # Output: {'a': 1, 'b': 2}
+print(loaded_data2)  # Output: ['apple', 'banana', 'cherry']
+
+
+
+
+
+
+
+
+

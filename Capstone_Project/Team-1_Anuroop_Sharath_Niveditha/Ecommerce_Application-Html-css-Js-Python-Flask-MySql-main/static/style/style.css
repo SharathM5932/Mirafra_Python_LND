@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+    display: flex;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    background: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    background: url('/static/images/ecommerce-bg.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Sidebar Overlay */
+.sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+/* Sidebar Content */
+.sidebar * {
+    position: relative;
+    z-index: 2;
+}
+
+.sidebar img {
+    width: 100px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    animation: slideInLeft 1s ease-in-out;
+}
+
+/* Sidebar Buttons */
+.btn-sidebar {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-sidebar i {
+    margin-right: 10px;
+}
+
+.btn-sidebar:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Dashboard Content */
+.dashboard-container {
+    width: 75%;
+    padding: 40px;
+}
+
+.dashboard-container h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Orders Card */
+.orders-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Orders Table */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.order-table th, .order-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-table th {
+    background: #ff9f1c;
+    color: white;
+}
+
+.order-table tr:hover {
+    background: rgba(255, 159, 28, 0.2);
+}
+
+/* Delivered Status */
+.delivered-text {
+    color: green;
+    font-weight: bold;
+}
+
+/* Deliver Button */
+.btn-deliver {
+    background: #ff9f1c;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-deliver:hover {
+    background: #ffbf69;
+}
+
+/* No Orders Message */
+.no-orders {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    .dashboard-container {
+        width: 100%;
+        padding: 20px;
+    }
+}

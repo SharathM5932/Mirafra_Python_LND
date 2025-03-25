@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Product</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-[-280px] w-72 bg-gray-800 text-white h-full transition-all duration-300 ease-in-out z-50">
+        <div class="p-6">
+            <img src="/static/images/logo.png" alt="Logo" class="w-20 mb-5 mx-auto">
+            <h2 class="text-2xl font-semibold text-center mb-6">Dashboard</h2>
+
+            <a href="{{ url_for('business') }}" class="block py-3 px-6 hover:bg-gray-700 rounded">Business Home</a>
+            <a href="{{ url_for('view_products') }}" class="block py-3 px-6 hover:bg-gray-700 rounded">My Products</a>
+            <a href="{{ url_for('logout') }}" class="block py-3 px-6 hover:bg-gray-700 rounded">Logout</a>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Main Content -->
+    <div class="ml-0 md:ml-72 transition-all duration-300 ease-in-out p-10" id="main-content">
+        <button id="toggle-btn" class="absolute top-6 left-6 z-10 text-white bg-gray-800 p-4 rounded-md md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-8">Welcome, {{ name }}</h1>
+            <h2 class="text-2xl font-semibold text-center mb-8">Upload a New Product</h2>
+
+            <div class="bg-white p-10 rounded-lg shadow-lg max-w-2xl mx-auto w-full">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mb-6">
+                        {% for category, message in messages %}
+                            <div class="p-4 mb-4 text-white {{ 'bg-green-500' if category == 'success' else 'bg-red-500' }} rounded-lg">
+                                <strong>{{ message }}</strong>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+                <form action="" method="POST" enctype="multipart/form-data">
+
+                    <!-- Product Name -->
+                    <div class="mb-6">
+                        <label for="name" class="block font-semibold mb-2 text-lg">Product Name:</label>
+                        <input type="text" id="name" name="name" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Price & Quantity -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="price" class="block font-semibold mb-2 text-lg">Price:</label>
+                            <input type="number" id="price" name="price" step="0.01" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="quantity" class="block font-semibold mb-2 text-lg">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-6">
+                        <label for="category" class="block font-semibold mb-2 text-lg">Category:</label>
+                        <select id="category" name="category" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="electronics">Electronics</option>
+                            <option value="grocery">Grocery</option>
+                        </select>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-6">
+                        <label for="desc" class="block font-semibold mb-2 text-lg">Description:</label>
+                        <textarea id="desc" name="desc" rows="4" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+
+                    <!-- Image Upload -->
+                    <div class="mb-8">
+                        <label for="image" class="block font-semibold mb-2 text-lg">Upload Product Image:</label>
+                        <input type="file" id="image" name="image" accept="image/*" required class="w-full p-4 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full py-4 bg-green-600 text-white text-xl rounded-md hover:bg-green-700 transition transform hover:scale-105">
+                        <i class="fas fa-upload"></i> ADD PRODUCT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tailwind JS and FontAwesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        // Sidebar Toggle
+        document.getElementById('toggle-btn').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main-content');
+
+            if (sidebar.style.left === '-280px') {
+                sidebar.style.left = '0';
+                overlay.style.display = 'block';
+                mainContent.classList.add('ml-72');
+            } else {
+                sidebar.style.left = '-280px';
+                overlay.style.display = 'none';
+                mainContent.classList.remove('ml-72');
+            }
+        });
+
+        // Close sidebar when overlay is clicked
+        document.getElementById('overlay').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main-content');
+
+            sidebar.style.left = '-280px';
+            overlay.style.display = 'none';
+            mainContent.classList.remove('ml-72');
+        });
+    </script>
+
+</body>
+</html>

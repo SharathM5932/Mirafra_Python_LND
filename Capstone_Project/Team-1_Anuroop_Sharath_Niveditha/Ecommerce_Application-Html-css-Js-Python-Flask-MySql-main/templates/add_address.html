@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Address</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-[-250px] w-64 bg-gray-800 text-white h-full transition-all duration-300 ease-in-out z-50">
+        <div class="p-5">
+            <img src="/static/images/logo.png" alt="Logo" class="w-16 mb-4">
+            <h2 class="text-2xl font-semibold mb-4">Business Dashboard</h2>
+            <p class="text-sm mb-6">Manage Your Orders & Products</p>
+
+            <a href="{{ url_for('consumer') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Switch Account</a>
+            <a href="{{ url_for('logout') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Logout</a>
+            <a href="{{ url_for('add_address') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Add Address</a>
+            <a href="{{ url_for('upload') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">Add Product</a>
+            <a href="{{ url_for('view_products') }}" class="block py-2 px-4 hover:bg-gray-700 rounded">My Products</a>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay (when sidebar is open) -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Main content area -->
+    <div class="ml-0 md:ml-64 transition-all duration-300 ease-in-out" id="main-content">
+        <button id="toggle-btn" class="absolute top-5 left-5 z-10 text-white bg-gray-800 p-3 rounded-md md:hidden">
+            <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+        </button>
+
+        <div class="container mx-auto p-8">
+            <h2 class="text-3xl font-bold mb-6">Add Address</h2>
+
+<!--            {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--                {% if messages %}-->
+<!--                    <div class="mb-6">-->
+<!--                        {% for category, message in messages %}-->
+<!--                            <div class="p-4 mb-4 text-white {{ 'bg-green-500' if category == 'success' else 'bg-red-500' }} rounded-lg">-->
+<!--                                <strong>{{ message }}</strong>-->
+<!--                            </div>-->
+<!--                        {% endfor %}-->
+<!--                    </div>-->
+<!--                {% endif %}-->
+<!--            {% endwith %}-->
+
+            <form action="/add_address" method="POST" class="bg-white p-8 rounded-lg shadow-lg">
+                <!-- Street Number and Postal Code -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="street_no" class="block font-semibold mb-2">Street Number</label>
+                        <input type="number" id="street_no" name="street_no" placeholder="Enter street number" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="postal_code" class="block font-semibold mb-2">Postal Code</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="Enter postal code" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- Address Line 1 -->
+                <div class="mb-6">
+                    <label for="address_line1" class="block font-semibold mb-2">Address Line 1</label>
+                    <input type="text" id="address_line1" name="address_line1" placeholder="Enter address line 1" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <!-- Address Line 2 -->
+                <div class="mb-6">
+                    <label for="address_line2" class="block font-semibold mb-2">Address Line 2</label>
+                    <input type="text" id="address_line2" name="address_line2" placeholder="Enter address line 2" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- City and Region -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="city" class="block font-semibold mb-2">City</label>
+                        <input type="text" id="city" name="city" placeholder="Enter city" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label for="region" class="block font-semibold mb-2">Region</label>
+                        <input type="text" id="region" name="region" placeholder="Enter region" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- Country -->
+                <div class="mb-6">
+                    <label for="country" class="block font-semibold mb-2">Country</label>
+                    <input type="text" id="country" name="country" placeholder="Enter country" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition transform hover:scale-105">Add Address</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tailwind JS and FontAwesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        // Toggle sidebar visibility
+        document.getElementById('toggle-btn').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main-content');
+
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0'; // Show sidebar
+                overlay.style.display = 'block'; // Show overlay
+                mainContent.classList.add('ml-64'); // Adjust content when sidebar is open
+            } else {
+                sidebar.style.left = '-250px'; // Hide sidebar
+                overlay.style.display = 'none'; // Hide overlay
+                mainContent.classList.remove('ml-64');
+            }
+        });
+
+        // Close sidebar when overlay is clicked
+        document.getElementById('overlay').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('main-content');
+
+            sidebar.style.left = '-250px';
+            overlay.style.display = 'none';
+            mainContent.classList.remove('ml-64');
+        });
+    </script>
+</body>
+</html>

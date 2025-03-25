@@ -1,0 +1,246 @@
+ #hello world in Flask pycharm 
+from flask import Flask
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello world!'
+
+if __name__=='__main__':
+    app.run(debug=True)
+-----------------------------------------
+O/P:
+#create a pycharm file, type prog and run with a warning
+#or
+#in terminal use: python filename.py
+#same warning
+#in web page search for admin it says not found
+#paste entire hello program from line6 and output is shown only ones
+=======================================================================
+#hello+name
+from flask import Flask
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello world!'
+
+@app.route('/<name>')
+def hello_world(name):
+    return 'Hello '+ name
+
+if __name__=='__main__':
+    app.run(debug=True)
+--------------
+#o/p
+http://127.0.0.1:5000/name
+http://127.0.0.1:5000/Deepthi
+---------------------------------------------------------------------
+#or
+#hello+name
+@app.route('/hello/<name>')
+def hello1(name):
+    return 'Hello %s!' %name
+------------
+#o/p same
+===============================================
+#for int and float
+from flask import Flask
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello world!'
+
+@app.route('/blog/<int:postID>')
+def hello_world(postID):
+    return 'Blog number is %d' %postID
+
+@app.route('/rev/<float:revno>')
+def hello1(revno):
+    return 'Revision num %f!' %revno
+
+if __name__=='__main__':
+    app.run(debug=True)
+------------------------------
+/blog/<int:postID>,/rev/<float:revno>-> all are user defined can change
+#O/P
+#for int
+http://127.0.0.1:5000/blog/11
+Blog number is 11
+-----------
+#for float
+http://127.0.0.1:5000/rev/5.8
+Revision num 5.800000!
+=================================================
+
+#Str-Dynamic URL
+#By default in Flask route accepts string only. So, <str:> won't work
+#But it acceptsdee123-@ etc so go with this
+#+reverse string
+
+from flask import Flask, abort
+import re
+
+app = Flask(__name__)
+
+@app.route('/rev/<revstr>')
+def reverse_string(revstr):    
+    if not re.match(r'^[a-zA-Z]+$', revno):
+        abort(400, "Invalid format. Only letters are allowed.")
+    return f"Reversed string: {revstr[::-1]}"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+=================================================
+#canonical
+from flask import Flask
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello world!'
+
+@app.route('/flask')
+def hello_world():
+    return 'Hello flask'
+
+@app.route('/Python/')
+def hello1():
+    return 'Hello Python!'
+
+if __name__=='__main__':
+    app.run(debug=True)
+--------------------------
+#O/P
+http://127.0.0.1:5000/Python/
+Hello Python!
+http://127.0.0.1:5000/Deepthi/
+Not found
+-----------------
+http://127.0.0.1:5000/flask
+Hello flask
+================================================
+#admin and guest
+from flask import Flask,redirect,url_for
+app=Flask(__name__)
+
+@app.route('/admin')
+def hello():
+    return 'Hello admin!'
+
+@app.route('/guest/<guest>')
+def hello_world(guest):
+    return 'Hello %s as a guest' %guest
+
+@app.route('/user/<name>')
+def hello1(name):
+    if name=='admin':
+        return redirect(url_for('hello'))
+    else: return redirect(url_for('hello_world',guest=name))
+
+
+if __name__=='__main__':
+    app.run(debug=True)
+------------------------------
+#O/P
+http://127.0.0.1:5000
+Not found
+http://127.0.0.1:5000/admin
+Hello admin!
+http://127.0.0.1:5000/guest/Deepthi
+#it will take guest by default
+http://127.0.0.1:5000/user/Deepthi
+Hello Deepthi as a guest
+http://127.0.0.1:5000/Deepthi/admin
+Not found
+http://127.0.0.1:5000/user/admin
+Hello admin!
+=========================================================
+#Html o/p cumbersome
+from flask import Flask
+app=Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "<html><body><h1>'This is my Home page'</h1></body></html>"
+
+
+if __name__=='__main__':
+    app.run(debug=True)
+----------------------------
+#o/p
+This is my Home page
+========================================================
+#Html o/p
+#in .py file
+from flask import Flask,request,render_template
+import pickle
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():
+    return render_template("login.html")
+database={'Deepthi':'1234','Sthuthi':'baby'}
+
+@app.route('/form_login',methods=['POST','GET'])
+def login():
+    name1=request.form['username']
+    pwd=request.form['password']
+    if name1 not in database:
+        return render_template('login.html',info='Invalid User')
+    else:
+        if database[name1]!=pwd:
+            return render_template('login.html',info='Invalid Password')
+        else:
+            return render_template('home.html',name=name1)
+
+if __name__ == '__main__':
+    app.run()
+----------------------------
+#create a folder'templates' in the python project.
+#inside this 'templates' folder create 2 html files 'login' and 'home' 
+#in login file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body bgcolor="orange">
+
+<form action="/form_login" method="post">
+    <h2></h2>Username:<br>
+    <input type="text" name='username'><br>
+    Password:<br>
+    <input  name='password' ><br><br>
+    <input type="submit" value="Login">
+</form>
+<h1 >{{info}}</h1>
+
+</body>
+</html>
+------------------------------
+#in home file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body bgcolor="teal">
+<br>
+<h1 align="center">Welcome {{name}} !</h1>
+
+</body>
+</html>
+---------------------------------------
+#O/P
+http://127.0.0.1:5000
+user id pw submit button
+http://127.0.0.1:5000/form_login
+Welcome Sthuthi !
+
+

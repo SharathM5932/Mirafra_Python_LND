@@ -1,0 +1,40 @@
+Discount coupon
+Ravi has an online sweets store called ‘XYZ’. He wants to announce discount on the occasions of Christmas and new year. He has already distributed coupon codes amongst his customers. Please help him by writing piece of code which will be reducing the payable amount by the customer only if the coupon code is correct. Please note the coupon codes are case sensitive.
+ Descriptions of coupon codes:
+1.	Please consider the payable amount by the customer  is Rs. 1500/-. 
+2.	If the coupon code is 'CDEC01' then reduce Rs. 500/- from payable amount.
+3.	If the coupon code is 'ONEJAN02' then reduce half of the price from payable amount.
+4.	If the coupon code is '2234150' then display the message that the customer has earned 1000 loyalty points and don’t reduce any amount  from payable.
+
+........................................
+Sample case 1:
+Welcome to online shopping.
+your cart is not empty.
+You have to pay Rs. 1500/-
+Do you have coupon? type y or n
+Please pay Rs. 1500/-
+
+Sample case 2:
+Welcome to online shopping.
+your cart is not empty.
+You have to pay Rs. 1500/-
+Do you have coupon? type y or n
+Please enter the coupon code: CDEC01
+successfully applied the coupon code. Please pay 1000/-
+
+Sample case 3:
+Welcome to online shopping.
+your cart is not empty.
+You have to pay Rs. 1500/-
+Do you have coupon? type y or n
+Please enter the coupon code:ONEJAN02
+successfully applied the coupon code. Please pay 750/-
+
+Sample case 4:
+Welcome to online shopping.
+your cart is not empty.
+You have to pay Rs. 1500/-
+Do you have coupon? type y or n
+Please enter the coupon code:2234150
+successfully applied the coupon code.
+Congratulations! You got 1000 loyalty points for shopping with us. Please pay 1500/-

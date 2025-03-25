@@ -1,0 +1,29 @@
+Eva furniture center
+In Eve furniture center there are 4 floors. Basement is for car parking. In ground floor, all small dismantled furniture, packed in cotton boxes are stored. Furniture are stored in such a way that they can be searched easily. Ex: For every product there will be a product code which will be holding more details about product like: name, price, location in the ground floor to get the product and quantity present in the furniture center.
+If the customer likes a product which will be showcased in the 1st and 2nd floors, by seeing the label on the product, they can get all the details. And, if the product is small like chair or desk customer has to collect it by going to ground floor by him/her self. The exact location i.e. in ground floor in which bay, row and column the customer can get the product, will be mentioned on the product itself along with the product code. For ex: B1R1C1 means: Bay 1, Row 1 and column 1. But if the product is big enough which won’t be fitting in the customer’s car like a table or a sofa, then they have to pay delivery charge of Rs.600/- and can expect it to arrive to their home itself.
+Now being a developer create an app which can do this task automatically. Store the data given as your database. If the customer enters the product code along with the product price suitable details should be displayed.
+Note: If the product code is wrong, display the appropriate message. And, if the product quantity is zero then display the out of stock message.
+Data:
+
+
+Sample case 1:
+Please enter the product code:pdcR012
+Product Type: Shelf
+Sorry! Out of stock
+
+Sample case 2:
+Please enter the product code:pdcc01
+Product Type: Chair
+Price: 1500
+You can collect the product in the ground floor, Bay: 1 Row: 1 Column:  2
+
+Sample case 3:
+Please enter the product code: pdcs11
+Product Type: Sofa
+Product Price: 50000 + 600/- Rs. Delivery charge.
+Please pay Rs. 50600 
+The product will be delivered to your home.
+
+Sample case 4:
+Please enter the product code:abc
+Please enter a valid product code.

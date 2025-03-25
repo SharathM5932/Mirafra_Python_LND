@@ -1,0 +1,109 @@
+What is a Design Pattern in Python?
+A design pattern is a reusable solution to a common problem in software design. It provides a structured way to solve coding challenges, making the code more maintainable, scalable, and reusable.
+
+Design patterns are generally divided into three categories:
+
+Creational Patterns (e.g., Singleton, Factory, Builder)
+Structural Patterns (e.g., Adapter, Decorator, Proxy)
+Behavioral Patterns (e.g., Observer, Strategy, Command)
+....................................................
+
+1. Singleton Design Pattern
+The Singleton pattern ensures that only one instance of a class exists throughout the program.
+
+class Singleton:
+    _instance = None  # Stores the single instance
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+# Testing Singleton
+obj1 = Singleton()
+obj2 = Singleton()
+
+print(obj1 is obj2)  # Output: True (Both variables refer to the same instance)
+✅ Explanation:
+
+The __new__ method ensures that a new instance is created only if _instance is None.
+If an instance already exists, it returns the same instance instead of creating a new one.
+
+....................................................................
+2. Factory Pattern (Simple Object Creation)
+The Factory Pattern provides a way to create objects without exposing the exact class used for instantiation. It is useful when we have multiple subclasses of a common base class and need a way to instantiate them dynamically.
+
+Example: Factory Pattern in Python
+python
+Copy
+Edit
+class Car:
+    def create(self):
+        return "Car Created"
+
+class Bike:
+    def create(self):
+        return "Bike Created"
+
+class VehicleFactory:
+    @staticmethod
+    def get_vehicle(vehicle_type):
+        if vehicle_type == "car":
+            return Car()
+        elif vehicle_type == "bike":
+            return Bike()
+        else:
+            raise ValueError("Unknown vehicle type")
+
+# Usage
+vehicle1 = VehicleFactory.get_vehicle("car")
+print(vehicle1.create())  # Output: Car Created
+
+vehicle2 = VehicleFactory.get_vehicle("bike")
+print(vehicle2.create())  # Output: Bike Created
+✅ When to use?
+
+When we need to create objects dynamically based on input.
+Helps decouple the creation logic from the client code.
+
+........................................................................
+Builder Pattern (Step-by-Step Object Creation)
+The Builder Pattern is useful when an object has multiple configuration options. Instead of passing all options at once, we construct the object step by step.
+
+class Car:
+    def __init__(self):
+        self.engine = None
+        self.wheels = None
+        self.color = None
+
+    def __str__(self):
+        return f"Car with {self.engine} engine, {self.wheels} wheels, color {self.color}"
+
+class CarBuilder:
+    def __init__(self):
+        self.car = Car()
+
+    def set_engine(self, engine):
+        self.car.engine = engine
+        return self  # Returning self allows method chaining
+
+    def set_wheels(self, wheels):
+        self.car.wheels = wheels
+        return self
+
+    def set_color(self, color):
+        self.car.color = color
+        return self
+
+    def build(self):
+        return self.car  # Returns the final product
+
+# Usage
+car = CarBuilder().set_engine("V8").set_wheels(4).set_color("Red").build()
+print(car)  # Output: Car with V8 engine, 4 wheels, color Red
+
+✅ When to use?
+
+When an object has multiple attributes and you want a step-by-step configuration.
+Useful for complex object creation where a constructor with many parameters is impractical.
+

@@ -1,0 +1,144 @@
+Behavioral Design Patterns in Python
+Behavioral design patterns focus on how objects communicate and handle interactions efficiently. They help implement better communication, flexibility, and maintainability in an application.
+
+1. Observer Pattern (Event Subscription System)
+The Observer Pattern allows multiple objects (observers) to be notified when the state of another object (subject) changes. It's commonly used in event handling, GUI frameworks, and the Publish-Subscribe model.
+
+# Subject (Observable)
+class NewsPublisher:
+    def __init__(self):
+        self.subscribers = []
+
+    def subscribe(self, subscriber):
+        self.subscribers.append(subscriber)
+
+    def unsubscribe(self, subscriber):
+        self.subscribers.remove(subscriber)
+
+    def notify(self, news):
+        for subscriber in self.subscribers:
+            subscriber.update(news)
+
+# Observer
+class Subscriber:
+    def __init__(self, name):
+        self.name = name
+
+    def update(self, news):
+        print(f"{self.name} received news: {news}")
+
+# Usage
+publisher = NewsPublisher()
+
+sub1 = Subscriber("Alice")
+sub2 = Subscriber("Bob")
+
+publisher.subscribe(sub1)
+publisher.subscribe(sub2)
+
+publisher.notify("Breaking News: Python is awesome!")  
+# Output:
+# Alice received news: Breaking News: Python is awesome!
+# Bob received news: Breaking News: Python is awesome!
+
+✅ When to use?
+
+When multiple objects need to react to changes in another object.
+Used in event listeners, pub-sub models, and GUI frameworks.
+
+...............................................................
+2. Strategy Pattern (Dynamic Algorithm Selection)
+The Strategy Pattern allows selecting an algorithm at runtime from multiple available algorithms. It helps avoid conditional statements (if-else) and allows easily switching between different behaviors.
+
+# Different strategies
+class CreditCardPayment:
+    def pay(self, amount):
+        return f"Paid {amount} using Credit Card"
+
+class PayPalPayment:
+    def pay(self, amount):
+        return f"Paid {amount} using PayPal"
+
+class BitcoinPayment:
+    def pay(self, amount):
+        return f"Paid {amount} using Bitcoin"
+
+# Context class
+class PaymentProcessor:
+    def __init__(self, strategy):
+        self.strategy = strategy  # Strategy is set at runtime
+
+    def process_payment(self, amount):
+        return self.strategy.pay(amount)
+
+# Usage
+payment1 = PaymentProcessor(CreditCardPayment())
+print(payment1.process_payment(100))  # Output: Paid 100 using Credit Card
+
+payment2 = PaymentProcessor(PayPalPayment())
+print(payment2.process_payment(200))  # Output: Paid 200 using PayPal
+
+✅ When to use?
+
+When you need to switch algorithms dynamically at runtime.
+Useful in payment processing, sorting algorithms, and data compression.
+
+...........................................................
+3. Command Pattern (Encapsulating Requests)
+The Command Pattern encapsulates a request as an object, allowing us to parameterize clients with different requests, queue requests, and log the history of executed operations.
+
+# Command Interface
+class Command:
+    def execute(self):
+        pass
+
+# Concrete Command
+class LightOnCommand(Command):
+    def __init__(self, light):
+        self.light = light
+
+    def execute(self):
+        return self.light.turn_on()
+
+class LightOffCommand(Command):
+    def __init__(self, light):
+        self.light = light
+
+    def execute(self):
+        return self.light.turn_off()
+
+# Receiver (Actual class performing action)
+class Light:
+    def turn_on(self):
+        return "Light is ON"
+
+    def turn_off(self):
+        return "Light is OFF"
+
+# Invoker (Request Sender)
+class RemoteControl:
+    def __init__(self):
+        self.command = None
+
+    def set_command(self, command):
+        self.command = command
+
+    def press_button(self):
+        return self.command.execute()
+
+# Usage
+light = Light()
+light_on = LightOnCommand(light)
+light_off = LightOffCommand(light)
+
+remote = RemoteControl()
+remote.set_command(light_on)
+print(remote.press_button())  # Output: Light is ON
+
+remote.set_command(light_off)
+print(remote.press_button())  # Output: Light is OFF
+
+✅ When to use?
+
+When you want to store, queue, or undo actions.
+Used in remote controls, undo/redo features, and task scheduling.

@@ -1,0 +1,42 @@
+Test Coverage Analysis is a process of evaluating the extent to which your tests cover the codebase. It helps to identify which parts of the code are tested and which parts remain untested. The goal is to improve the quality of the testing process by ensuring all code paths and components are adequately tested. Test coverage is typically represented as a percentage, where a higher percentage indicates more code is covered by tests.
+
+Types of Coverage Metrics:
+Line Coverage: Measures the percentage of executable lines of code that are executed by tests.
+Branch Coverage: Measures whether each branch (e.g., in if statements) has been executed during the tests.
+Function Coverage: Measures whether each function in the code is called during the tests.
+
+# dee.py
+def calculate_area(length, width):
+    if length <= 0 or width <= 0:
+        raise ValueError("Length and width must be positive")
+    return length * width
+....................................................................................................
+# test_dee.py
+import pytest
+from dee import calculate_area
+
+def test_calculate_area_valid():
+    assert calculate_area(5, 10) == 50
+
+def test_calculate_area_invalid():
+    with pytest.raises(ValueError):
+        calculate_area(-5, 10)
+......................................................................................................
+pip install pytest 
+pip install pytest pytest-cov
+
+#to run
+pytest --cov=dee test_dee.py
+#pytest --cov=file test_file.py
+
+
+
+guide me to create e-commerce uml 
+
+- there only role seller and buyer 
+- seller can also buy and buyer can also sell products
+- each of them have only one account like amazon can perform both seller and buyer
+- how to organize the database with relationship, what are tables like products, user
+- how to fetch product on user 
+- where i start working on it
+- 

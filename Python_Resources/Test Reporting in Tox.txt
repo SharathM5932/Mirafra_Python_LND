@@ -1,0 +1,50 @@
+Test Reporting in Tox: Generating and Analyzing Reports
+Tox can be used to generate and analyze test reports in formats like JUnit XML and Allure Reports when running tests with pytest. These reports help in tracking test results, failures, and trends over time.
+
+1. Generating JUnit XML Reports in Tox
+JUnit XML reports provide a structured output that can be used in CI/CD tools like Jenkins, GitHub Actions, and GitLab.
+---------------------------------
+
+pip install tox pytest pytest-cov pytest-junitxml
+pip install tox
+--------------------
+deetest/
+│── tox.ini
+│── requirements.txt
+│── pytest.ini
+│── tests/
+│   ├── __init__.py
+│   ├── test_sample.py
+-------------------------------
+#tox.ini
+[tox]
+envlist = py311
+
+[testenv]
+deps =
+    pytest
+    pytest-cov
+commands =
+    pytest --junitxml=reports/junit-{envname}.xml
+
+-------------------------------------
+#pytest.ini
+[pytest]
+addopts = --strict-markers
+testpaths = tests
+
+-------------------------------------
+#requirements.txt
+pytest
+pytest-cov
+
+-------------------------------------
+#test_sample.py
+import pytest
+
+def test_example():
+    assert 1 + 1 == 2
+------------------------------
+tox
+
+# now see the report in 'reports' folder

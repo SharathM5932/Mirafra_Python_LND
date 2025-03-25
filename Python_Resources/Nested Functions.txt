@@ -1,0 +1,23 @@
+Nested Function
+
+def out(a=20):
+    def inside():
+        print(a)
+    return inside()
+
+
+out(5)
+----------------------------
+#function decorator
+
+def outside(x):
+    def inside():
+        return x()+1
+    return inside
+
+def onemore():
+    return 6
+
+
+haha=outside(onemore)
+print (haha())

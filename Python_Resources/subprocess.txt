@@ -1,0 +1,25 @@
+#subprocess
+import subprocess
+'''#output=subprocess.run("echo,'Hello world'",shell=True)
+
+output=subprocess.run("echo,'Hello world'",shell=True,
+                      stdout=subprocess.PIPE,stderr=subprocess.PIPE,
+                      universal_newlines=True)
+print(output)'''
+p1=subprocess.run('dir',shell=True)
+print(p1)
+...........................................
+#subprocess
+import subprocess,sys
+'''#-c-> allows to pass a string
+result=subprocess.run([sys.executable,'-c',"print('anything')"],
+                      capture_output=True,text=True)
+print('stdout=',result.stdout)
+print('stderr=',result.stderr)
+result=subprocess.run([sys.executable,'-c',"raise ValueError('oops')"],
+                      capture_output=True,text=True)
+print('stdout=',result.stdout)
+print('stderr=',result.stderr)'''
+result=subprocess.run([sys.executable,'-c',"import sys; print(sys.stdin.read())"],
+                      input=b'anything')
+

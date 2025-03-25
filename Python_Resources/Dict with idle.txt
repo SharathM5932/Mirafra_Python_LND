@@ -1,0 +1,170 @@
+Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+menu={'idli':10,'dosa':40,'Dosa':45,'IDLI':10}
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10}
+type(menu)
+m={}
+m1={'deepthi
+  SyntaxError: EOL while scanning string literal
+m1={'deepthi':}
+SyntaxError: invalid syntax
+m2={:'deepthi'}
+SyntaxError: invalid syntax
+m3={'Yashwanth':'Pala'}
+m4={1:2}
+m5={'idli':[1,2,3,4]}
+menu1={'idli':10,'idli':40,'Dosa':45,'IDLI':10}
+menu1
+{'idli': 40, 'Dosa': 45, 'IDLI': 10}
+menu1['idli']
+40
+m4[1]
+2
+del m4[1]
+m4[2]=4
+m4
+{2: 4}
+m4['Yashwanth']=1
+m4
+{2: 4, 'Yashwanth': 1}
+m4[1]
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    m4[1]
+KeyError: 1
+m4.index(1)
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    m4.index(1)
+AttributeError: 'dict' object has no attribute 'index'
+menu.items()
+dict_items([('idli', 10), ('dosa', 40), ('Dosa', 45), ('IDLI', 10)])
+menu.values()
+dict_values([10, 40, 45, 10])
+menu.keys()
+dict_keys(['idli', 'dosa', 'Dosa', 'IDLI'])
+str(menu)
+"{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10}"
+len(menu)
+4
+list(menu.items())
+[('idli', 10), ('dosa', 40), ('Dosa', 45), ('IDLI', 10)]
+list(menu)
+['idli', 'dosa', 'Dosa', 'IDLI']
+menu.update({'Pizza':150})_
+SyntaxError: invalid syntax
+menu.update({'Pizza':150})
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150}
+menu.update({'Burger':150,'Chicken':160})
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150, 'Burger': 150, 'Chicken': 160}
+menu['chicken']="Chicken"
+ menu1=menu.copy()
+menu1
+del menu1['chicken']
+for key in list(menu.keys()):
+	if key in list(menu1.keys()): print(True)
+	else: print(False)
+
+	
+list(menu.keys())
+list(menu1.keys())
+ menu.sort()
+AttributeError: 'dict' object has no attribute 'sort'
+menu2=list(menu.keys())
+menu2.sort()
+menu2
+['Burger', 'Chicken', 'Dosa', 'IDLI', 'Pizza', 'chicken', 'dosa', 'idli']
+for m in menu2:
+	print(':'.join((m,str(menu[m]))))
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150, 'Burger': 150, 'Chicken': 160, 'chicken': 'Chicken'}
+menu['Burger']
+150
+
+Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+menu={'idli':10,'dosa':40,'Dosa':45,'IDLI':10}
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10}
+type(menu)
+m={}
+m1={'deepthi
+  SyntaxError: EOL while scanning string literal
+m1={'deepthi':}
+SyntaxError: invalid syntax
+m2={:'deepthi'}
+SyntaxError: invalid syntax
+m3={'Yashwanth':'Pala'}
+m4={1:2}
+m5={'idli':[1,2,3,4]}
+menu1={'idli':10,'idli':40,'Dosa':45,'IDLI':10}
+menu1
+{'idli': 40, 'Dosa': 45, 'IDLI': 10}
+menu1['idli']
+40
+m4[1]
+2
+del m4[1]
+m4[2]=4
+m4
+{2: 4}
+m4['Yashwanth']=1
+m4
+{2: 4, 'Yashwanth': 1}
+m4[1]
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    m4[1]
+KeyError: 1
+m4.index(1)
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    m4.index(1)
+AttributeError: 'dict' object has no attribute 'index'
+menu.items()
+dict_items([('idli', 10), ('dosa', 40), ('Dosa', 45), ('IDLI', 10)])
+menu.values()
+dict_values([10, 40, 45, 10])
+menu.keys()
+dict_keys(['idli', 'dosa', 'Dosa', 'IDLI'])
+str(menu)
+"{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10}"
+len(menu)
+4
+list(menu.items())
+[('idli', 10), ('dosa', 40), ('Dosa', 45), ('IDLI', 10)]
+list(menu)
+['idli', 'dosa', 'Dosa', 'IDLI']
+menu.update({'Pizza':150})_
+SyntaxError: invalid syntax
+menu.update({'Pizza':150})
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150}
+menu.update({'Burger':150,'Chicken':160})
+menu
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150, 'Burger': 150, 'Chicken': 160}
+menu['chicken']="Chicken"
+ menu1=menu.copy()
+menu1
+del menu1['chicken']
+for key in list(menu.keys()):
+	if key in list(menu1.keys()): print(True)
+	else: print(False)
+
+	
+list(menu.keys())
+list(menu1.keys())
+ menu.sort()
+AttributeError: 'dict' object has no attribute 'sort'
+menu2=list(menu.keys())
+menu2.sort()
+menu2
+['Burger', 'Chicken', 'Dosa', 'IDLI', 'Pizza', 'chicken', 'dosa', 'idli']
+for m in menu2:
+	print(':'.join((m,str(menu[m]))))
+{'idli': 10, 'dosa': 40, 'Dosa': 45, 'IDLI': 10, 'Pizza': 150, 'Burger': 150, 'Chicken': 160, 'chicken': 'Chicken'}
+menu['Burger']
+150
+

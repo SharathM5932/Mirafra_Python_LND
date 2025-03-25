@@ -1,0 +1,79 @@
+#TOX
+1st install different versions of Python
+Go to python.org ->downloads-> scroll down for older versions and install 1 or 2 versions.
+
+in cmd prmt check the same:
+py -0
+this command should show all the versions available
+.................................
+...................
+my_tox_project/
+│
+├── app.py          # Your application code
+├── test_app.py     # Test file using pytest
+├── tox.ini         # Tox configuration
+├── requirements.txt  # Dependencies for the project
+..................
+pip install tox
+...........
+.............
+
+#app.py
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+............
+#test_app.py
+import pytest
+from app import add, subtract
+
+def test_add():
+    assert add(2, 3) == 5
+    assert add(-1, 1) == 0
+
+def test_subtract():
+    assert subtract(5, 3) == 2
+    assert subtract(0, 1) == -1
+.................
+
+#requirements.txt
+pytest
+....................
+#tox.ini
+[tox]
+envlist = py310, py311, py313
+
+[testenv]
+deps =
+    pytest
+commands =
+    pytest
+
+----------------
+or
+#tox.ini file in detail
+------------------
+#tox.ini
+[tox]
+envlist = py310, py311, py313  # Define multiple Python environments to test across
+
+# Virtual environment configuration
+[testenv]
+deps = 
+    pytest  # Install pytest in the virtual environment
+commands = 
+    pytest  # Run tests using pytest
+
+# Configure individual environments (Optional if you want specific settings for each version)
+[testenv:py310]
+basepython = python3.10  # Python 3.10 environment
+
+[testenv:py311]
+basepython = python3.11  # Python 3.11 environment
+
+[testenv:py313]
+basepython = python3.13  # Python 3.13 environment
+
+

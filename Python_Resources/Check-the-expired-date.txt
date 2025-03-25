@@ -1,0 +1,46 @@
+Check the expired date
+Suresh is owner of ‘ABC’ super market. As a responsible owner he will be checking the expired date of every product before showcasing them for sale. In his super market every product is having product code.
+Help Suresh by writing a program which will display the message weather product is expired or can be kept in shelves to sale, based on the product code. If the product code is wrong terminate the program.
+Note:
+1.	Store this data(table) into program.
+2.	Please consider 1 month=30 days 
+3.	Please consider today’s date is 12/01/22 (mm/dd/yy).
+
+...........................................
+Sample cases:
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:1
+Product name: Soap
+Good to sale
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:2
+Product name: Shampoo
+Expired
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:3
+Product name: Tooth paste
+Expired
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:4
+Product name: Ready juice
+Good to sale
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:5
+Product name: Chips
+Good to sale
+
+Welcome to ABC  super market's inspection portal
+Today's Date is:12/01/22
+Enter the product code:6
+Enter the existing product code.
+

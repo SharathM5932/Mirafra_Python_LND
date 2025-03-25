@@ -1,0 +1,27 @@
+#Multthreading
+#Locking the thread
+import threading
+def new1(s):
+    for i in range(5):
+        c.acquire()
+        print('HI')
+        c.release()
+c=threading.Lock()
+t1=threading.Thread(target=new1,args=(c,))
+t1.start()
+t1.join()
+print('Bye')
+..........................................
+#Multthreading
+#with out extending the class
+import threading
+class a():
+    def ab(self):
+        li=[1,'a','ab',3]
+        for i in li:
+            print('items=',i)
+o=a()
+t1=threading.Thread(target=o.ab)
+t1.start()
+t1.join()
+print('bye')

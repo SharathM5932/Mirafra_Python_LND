@@ -1,0 +1,92 @@
+class MyClass:
+    def __init__(self):
+        self._protected_var = "This is a protected variable"
+
+obj = MyClass()
+# Access the protected variable (not recommended)
+print(obj._protected_var)  # Output: This is a protected variable
+...................................
+Accessing protected variables directly outside the class is not recommended because it violates the principle of encapsulation. If you need to access or modify such variables, it is better to use a getter or setter method.
+
+class MyClass:
+    def __init__(self):
+        self._protected_var = "This is a protected variable"
+
+    def get_protected_var(self):
+        return self._protected_var
+
+    def set(self, value):
+        self._protected_var = value
+
+obj = MyClass()
+print(obj.get_protected_var())  # Output: This is a protected variable
+obj.set("New value")
+print(obj.get_protected_var())  # Output: New value
+................................
+#Private
+Private variables are name-mangled internally. Their actual name is _ClassName__variableName. You can use this mangled name to access the variable, but this is not recommended.
+
+class MyClass:
+    def __init__(self):
+        self.__private_var = "This is a private variable"
+
+    def get_private_var(self):
+        return self.__private_var  # Access within the class
+
+obj = MyClass()
+# Attempt to access directly (raises AttributeError)
+# print(obj.__private_var)  # Uncommenting this will raise an error
+# Access using the getter
+print(obj.get_private_var())  # Output: This is a private variable
+
+# Access the private variable using name mangling
+print(obj._MyClass__private_var)  # Output: This is a private variable
+
+...................................
+class Employee:
+    def __init__(self, name, salary):
+        self.__name = name
+        self.__salary = salary
+
+    # Getter for name
+    @property
+    def name(self):
+        return self.__name
+
+    # Setter for name
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
+    # Getter for salary
+    @property
+    def salary(self):
+        return self.__salary
+
+    # Setter for salary
+    @salary.setter
+    def salary(self, salary):
+        if salary < 0:
+            print("Salary cannot be negative!")
+        else:
+            self.__salary = salary
+
+# Create an object of the Employee class
+emp = Employee("Alice", 70000)
+
+# Access private variables as if they were public attributes
+print(emp.name)    # Output: Alice
+print(emp.salary)  # Output: 70000
+
+# Modify private variables
+emp.name = "Bob"
+emp.salary = 80000
+
+print(emp.name)    # Output: Bob
+print(emp.salary)  # Output: 80000
+...........................
+Instead of writing explicit getter and setter methods, Python provides the @property decorator to simplify this process.
+
+
+
+

@@ -1,0 +1,76 @@
+#multiprocess
+#if __name__=='__main__':
+from multiprocessing import Pool
+def f(x): return x*x
+if __name__=='__main__':
+    with Pool(5) as p:
+        print(p.map(f,[2,4,5,6]))
+.........................................
+from multiprocessing import Process
+def f(x): print('Hello',x)
+if __name__=='__main__':
+    p=Process(target=f,args=('Suchitra',))
+    p.start()
+    p.join()
+-----------------------------------------------
+#multiprocess
+#if __name__=='__main__':
+import multiprocessing
+def pcube(num): print('Cube:{}'.format(num*num*num))
+def psquare(num): print('square:{}'.format(num*num))
+if __name__=='__main__':
+    p1=multiprocessing.Process(target=psquare,args=(10,))
+    p2=multiprocessing.Process(target=pcube,args=(10,))
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
+    print('Done!')
+..............................................
+#multiprocess
+#if __name__=='__main__':
+import multiprocessing,os
+def worker1():
+    print('Id of process worker1:{}'.format(os.getpid()))
+def worker2():
+    print('Id of process worker2:{}'.format(os.getpid()))
+if __name__=='__main__':
+    print('Id of main process :{}'.format(os.getpid()))
+    p1=multiprocessing.Process(target=worker1)
+    p2=multiprocessing.Process(target=worker2)
+    p1.start()
+    p2.start()
+    print('Id of process p1:{}'.format(p1.pid))
+    print('Id of process p2:{}'.format(p2.pid))
+    print('Process p1 is alive: {}'.format(p1.is_alive()))
+    p1.join()
+    p2.join()
+    print('both finished')
+    print('Process p1 is alive: {}'.format(p1.is_alive()))
+    print('Process p1 is alive: {}'.format(p1.is_alive()))
+
+....................................................................
+#multiprocess
+#if __name__=='__main__':
+from multiprocessing import Pool
+import time
+w=(['v',5],['x',2],['y',1],['z',3])
+def work_log(data):
+    print('Process name is %s waiting time is %s secs'%(data[0],data[1]))
+    time.sleep(int(data[1]))
+    print('Process %s Executed.'%data[0])
+def handler():
+    p=Pool(2)
+    p.map(work_log,w)
+if __name__=='__main__':
+    handler()
+..................................................................
+#Proxy object
+from multiprocessing import Manager
+if __name__=='__main__':
+    manager=Manager()
+    l=manager.list([i*i for i in range(10)])
+    print(l)
+    print(repr(l))
+    print(l[4])
+    print(l[2:5])

@@ -1,0 +1,64 @@
+Loyalty points
+Aadarsh works for billing department as cashier or counter boy in ABC store. Now a new offer has been announced that cashback on loyalty points. The offer is simple that if the customer is shopping for Rs. 100 he/she will get 1 loyalty point. For 2 points they have to bill Rs. 200 not less than that. If the customer earns 100 loyalty points they will get Rs. 100 cash back i.e. reduction in billing. 
+A coupon can also win loyalty points. If the customer has the coupon with code ‘123476’ they can win 20 loyalty points.
+Some of the customers are regular to ABC store who’s name are available in database along with their priorly earned loyalty points. If the customer is new to ABC store based on the bill amount and coupon Aadarsh has to calculate loyalty points. If the customer’s name is there in database then, their priorly earned loyalty points should be added along with their current bill and coupon if any, and give them cashback. The remaining loyalty points should be displayed as message.
+Now write a piece of code which will ask the bill amount and coupon code which Aadarsh has to enter and check to cash back offer.
+Data for available loyalty points:
+
+...................................
+Sample case1:
+Please enter the customer name:Pooja
+New customer
+Do the customer has the coupon? Type y or n:n
+Enter the bill amount to be paid:1500
+You have 15 loyalty points in your account. Please pay Rs.: 1500.0 Thank you.
+
+Sample case 2:
+Please enter the customer name:Pooja
+New customer
+Do the customer has the coupon? Type y or n:y
+Please enter the coupon code:123476
+Enter the bill amount to be paid:10050
+Congratulations! you won Rs. 100 cash back. You have to pay Rs.:  9950.0 
+And remaining loyalty points in your account is: 20
+
+Sample case 3:
+Please enter the customer name: Sajid
+Customer name: Sajid
+Do the customer has the coupon? Type y or n:n
+Enter the bill amount to be paid:150
+Congratulations! you won Rs. 100 cash back. You have to pay Rs.:  50.0 
+And remaining loyalty points in your account is: 22
+.......................
+hidden case:
+Please enter the customer name:Roopesh
+Customer name: Roopesh
+Do the customer has the coupon? Type y or n:y
+Please enter the coupon code:123476
+Enter the bill amount to be paid:1000
+Congratulations! you won Rs. 100 cash back. You have to pay Rs.:  900.0 
+And remaining loyalty points in your account is: 15
+............................
+Soultion:
+data={'Sajid':120,'Roopesh':85, 'Koushik':50, 'Lakshmi':64, 'Sathvik':12}
+name=input('Please enter the customer name:')
+if name not in data.keys():
+    print('New customer')
+else:print('Customer name:',name)
+y=input('Do the customer has the coupon? Type y or n:')
+c=0
+if y=='y':
+    c=int(input('Please enter the coupon code:'))
+    if c==123476:c=20
+    else:print("Wrong coupon code. Loyalty points won't get added.")
+bill=float(input('Enter the bill amount to be paid:'))
+b=bill/100
+b=round(b)
+lp=b+c
+if name in data.keys():
+    d=data[name]
+    lp=b+c+d
+if lp>=100:
+    print('Congratulations! you won Rs. 100 cash back. You have to pay Rs.: ',bill-100,
+            '\nAnd remaining loyalty points in your account is:',lp-100)
+else:print('You have',lp ,'loyalty points in your account. Please pay Rs.:',bill, 'Thank you.')

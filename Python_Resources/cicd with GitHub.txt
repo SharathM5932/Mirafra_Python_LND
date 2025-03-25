@@ -1,0 +1,123 @@
+cicd with GitHub
+my_project/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── my_module/
+│   └── __init__.py
+│   └── example.py
+│
+├── tests/
+│   └── __init__.py
+│   └── test_example.py
+│
+├── tox.ini
+├── requirements.txt
+└── setup.py
+-----------------------------------
+
+1. my_module/example.py
+# my_module/example.py
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+---------------------------------
+2. tests/test_example.py
+# tests/test_example.py
+
+from my_module.example import add, subtract
+
+def test_add():
+    assert add(2, 3) == 5
+    assert add(-1, 1) == 0
+
+def test_subtract():
+    assert subtract(5, 3) == 2
+    assert subtract(2, 5) == -3
+-----------------------------------------
+3. tox.ini
+
+# tox.ini
+
+[tox]
+envlist = py38, py39, py310
+
+[testenv]
+deps =
+    pytest
+commands =
+    pytest
+---------------------------------------------
+4. requirements.txt
+pytest
+tox
+--------------------------------------------
+5. setup.py
+
+# setup.py
+
+from setuptools import setup
+
+setup(
+    name='my_project',
+    version='0.1',
+    packages=['my_module'],
+)
+-----------------------------------------
+6. GitHub Actions Workflow (.github/workflows/ci.yml)
+This file defines the CI/CD pipeline using GitHub Actions. It will automatically run the tests every time there is a push or a pull request to the repository.
+
+# .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests with tox
+        run: tox
+--------------------------------------------------
+
+Commands to Run Locally
+Before pushing to GitHub, you can run everything locally.
+.venv\Scripts\activate`
+pip install -r requirements.txt
+tox
+--------------------------------------------
+This will run the tests in multiple Python environments (py38, py39, py310).
+
+Steps to Trigger CI/CD
+Push the code to GitHub.
+Create a pull request or push to the main branch.
+GitHub Actions will automatically run the workflow and execute the tests.
+CI/CD Process:
+Continuous Integration (CI): Every push or pull request triggers the GitHub Actions workflow, which installs dependencies and runs tests using tox and pytest.
+Continuous Delivery (CD): You could extend this workflow to deploy the project or package it after passing tests.

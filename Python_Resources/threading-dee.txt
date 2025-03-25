@@ -1,0 +1,95 @@
+import threading
+import time
+
+def print_numbers():
+    for i in range(5):
+        time.sleep(0.1)
+        print(f"Thread {threading.current_thread().name}: {i}")
+
+# Creating multiple threads
+t1 = threading.Thread(target=print_numbers, name="T1")
+t2 = threading.Thread(target=print_numbers, name="T2")
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("Main thread execution completed.")
+................................
+#Why to Use Lock in Threads
+Without lock, the final value of counter may be less than 200000 due to race conditions.
+
+import threading
+
+counter = 0  # Shared variable
+lock = threading.Lock()
+
+def increase_counter():
+    global counter
+    for _ in range(100000):
+        with lock:  # Lock prevents race condition
+            counter += 1
+
+t1 = threading.Thread(target=increase_counter)
+t2 = threading.Thread(target=increase_counter)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print(f"Final counter value: {counter}")  # Expected: 200000
+...............................
+#What Happens If We Don't Use join()?
+import threading
+import time
+
+def slow_task():
+    print("Task started")
+    time.sleep(2)
+    print("Task completed")
+
+t = threading.Thread(target=slow_task)
+t.start()
+
+print("Main thread completed without waiting for child thread.")
+...................................
+#use join
+
+import threading
+import time
+
+def slow_task():
+    print("Task started")
+    time.sleep(2)
+    print("Task completed")
+
+t = threading.Thread(target=slow_task)
+t.start()
+t.join()  # Waits for the thread to finish
+
+print("Main thread finished after child thread.")
+..............................
+#Running Multiple Threads Concurrently
+
+import threading
+import time
+
+def worker(num):
+    print(f"Worker {num} starting")
+    time.sleep(1)
+    print(f"Worker {num} done")
+
+threads = []
+for i in range(3):
+    t = threading.Thread(target=worker, args=(i,))
+    threads.append(t)
+    t.start()
+
+for t in threads:
+    t.join()  # Ensure all threads complete before proceeding
+
+print("All workers completed.")

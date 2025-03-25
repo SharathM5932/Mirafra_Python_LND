@@ -1,0 +1,60 @@
+#File Socket
+-----------------------------------------------------------------------------------
+#create a server file(main.py), create 3-4 more files with different names as client files.
+#paste same content to all client files
+#1st run server file
+#keep on running all client files one by one
+
+-----------------------------------------------------------------------------------
+#This is server
+import socket
+s=socket.socket()
+print('socket created')
+#bind takes 1 agr so give both local host and port no. as 1(inside 1 bracket)
+s.bind(('localhost',9999))
+#instead of localhost collect the ipaddress
+#and try with 2 different machines
+#no of clients=3 here
+s.listen(3)
+print('waiting for connections')
+while True:
+    c,addr=s.accept()
+    name=c.recv(1024).decode()
+    print('connected with',addr,name)
+        #always send the msg in byte format
+    c.send(bytes('welcome to our server','utf-8'))
+    c.close()
+output:
+socket created
+waiting for connections
+connected with ('127.0.0.1', 59851) dee
+connected with ('127.0.0.1', 59852) de1
+----------------------------------------------------------------
+
+#client
+import socket
+s=socket.socket()
+s.connect(('localhost',9999))
+#run the server and then the client
+#note the server after running the client: connected with address
+#59730 is client's port no.
+name=input('enter your name')
+s.send(bytes(name,'utf-8'))
+print(s.recv(1024))
+#buffer size=1024
+#run server to see new connection
+# i.e. as many times we run we get new connection
+#here only 3 times because only 3 clients
+
+output:
+enter your namede1
+b'welcome to our server'
+........................
+Find IP address
+Windows 
+Type ipconfig in the Command Prompt
+ 
+IPv4 Address:.....
+
+
+

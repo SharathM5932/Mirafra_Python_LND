@@ -1,0 +1,97 @@
+#Regular Expressions
+start()=Returns start index of the match
+end()=Returns end+1 index of the match
+group()=Returns the matched string
+re.match(pattern, string):
+------------
+import re
+result = re.match(r'TSE', 'TSE offers Python training at Madhapur')
+print(result)
+print(result.group(0))
+print(result.start())
+print(result.end())
+-----------------------
+import re
+s=input("Enter pattern to check: ")
+m=re.fullmatch(s,"ababab")
+if m!= None:
+    print("Full String Matched")
+else: print("Full String not Matched")
+----------------------
+import re
+result = re.search(r'at', 'TSE offers Python training at Madhapur')
+print(result.group(0),result.start(),result.end())
+--------------------------------
+import re
+result = re.findall(r'TSE', 'TSE offers Python training at Madhapur ')
+print(result)
+l=re.findall("[0-9]","a7b9c5kz")
+print(l)
+a=re.findall("[a-z]","a7b9c5kz")
+print(a)
+-------------------------------
+import re
+result = re.split(r'at', 'TSE offers Python training at Madhapur ')
+print(result)
+result = re.split(r'o', 'TSE offers Python training at Madhapur ',maxsplit=2)
+print(result)
+l=re.split(",","one,two,three,four,five")
+print(l)
+for t in l:
+    print(t)
+email=re.split(r'\.',"www.tse.com")
+for e in email:
+    print(e)
+
+------------------------------------
+import re
+result=re.sub(r'Madhapur','India','TSE offers Python training in Madhapur')
+print(result)
+s=re.sub("[a-z]","#","a7b9c5k8z")
+print(s)
+s1=re.subn("[a-z]","#","a7b9c5k8z")
+print(s1)
+print(s1[0])
+print(s1[1])
+-----------------------------
+import re
+pattern=re.compile('i')
+result=pattern.findall('TSE offers Python training in Madhapur')
+print(result)
+result2=pattern.findall('TSE offers Python training in Madhapur,TSE')
+print(result2)
+-------------------------
+import re
+count=0
+pattern=re.compile("ab")
+matcher=pattern.finditer("abaababa")
+for match in matcher:
+    count+=1
+print(match.start(),"...",match.end(),"...",match.group())
+print("The number of occurrences: ",count)
+----------------------------
+CHARACTER CLASSES :
+We can use character classes to search a group of characters.
+1. [abc]===>Either a or b or c
+2. [^abc] ===>Except a and b and c
+3. [a-z]==>Any Lower case alphabet symbol
+4. [A-Z]===>Any upper case alphabet symbol
+5. [a-zA-Z]==>Any alphabet symbol
+6. [0-9] Any digit from 0 to 9
+7. [a-zA-Z0-9]==>Any alphanumeric character
+8. [^a-zA-Z0-9]==>Except alphanumeric characters(Special Characters)Pre defined Character classes:
+
+\s =Space character
+\S =Any character except space character
+\d = Any digit from 0 to 9
+\D = Any character except digit
+\w = Any word character [a-zA-Z0-9]
+\W = Any character except word character (Special Characters)
+
+Quantifiers:We use quantifiers to specify the number of occurrences to match.
+a = Exactly one 'a'
+a+ = Atleast one 'a'
+a* = Any number of a's including zero number
+a? = Atmost one 'a' ie either zero number or one number
+a{m} = Exactly m number of a's 
+a{m,n} = Minimum m number of a's and Maximum n number of a's

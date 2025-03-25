@@ -1,0 +1,19 @@
+#Replace
+
+import re
+x='''Python is an interpreted, high-level, 
+general-purpose 
+programming language.'''
+print(x)
+r1=re.compile("\n")
+r2=r1.sub(" ",x)
+print(r2)
+-----------------------------------------------
+#Python Flag
+
+import re
+x='''Python is an interpreted, high-level, 
+general-purpose 
+programming language.'''
+r1=re.findall(r'^\w',x,re.MULTILINE)
+print(r1)

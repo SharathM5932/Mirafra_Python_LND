@@ -1,0 +1,17 @@
+Pytest Naming Convention:
+File Names:
+
+By default, pytest looks for test files matching the patterns:
+test_*.py (e.g., test_login.py, test_homepage.py)
+*_test.py (e.g., login_test.py, homepage_test.py)
+Function Names:
+
+Inside those files, pytest will recognize functions whose names start with test_ (e.g., test_login(), test_checkout()).
+............If you name your function checkout_test(), pytest will not recognize it as a test case unless you explicitly mark it with a decorator like @pytest.mark.
+ex:
+import pytest
+
+@pytest.mark.custom_test
+def checkout_test():
+    assert True
+

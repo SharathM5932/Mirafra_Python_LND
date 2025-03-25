@@ -1,0 +1,45 @@
+Customer sign in
+As you know everyone has to sign in by giving valid details to any online shopping site to shop. So that these data will be stored in shopping site permanently which will help sellers to know their customers better and customers need not to enter their details.
+Being a programmer write a program which will act as:
+1.	A sign in form which will take the basic details of a customer
+2.	Validate the data entered
+3.	If the data entered is wrong ask the customer to re-enter  n no. of times until they enter a valid data.
+4.	Finally accept only the valid data.
+Conditions for valid fields:
+1.	Full name.
+2.	Address: in 3 lines
+3.	Email: A email ID  should have ‘@’ symbol and a domain name to be valid.
+4.	Card:16 digits
+5.	GST no.:8 digit and 7 alphabets
+
+Sample case 1:
+Please fill the details to sign in.
+Full Name:Nagadeepthi
+Delivery address:
+Line 1:1,1st main
+Line 2:1st cross
+Line 3:Bangalore
+email ID:nagadeepthi@gmail.com
+Card no.:1234123412341234
+GST no.:22AAAAA0000H1Z5
+Thank you.
+
+Sample case 2:
+Please fill the details to sign in.
+Full Name:some
+Delivery address:
+Line 1:one
+Line 2:two
+Line 3:three
+email ID:bcd
+Please enter a valid email ID:abc@
+Please enter a valid email ID:abc@hcl.com
+Card no.:1234
+Enter 16 digits card no.:12341234
+Enter 16 digits card no.:123412a
+Enter 16 digits card no.:1234123412341234
+GST no.:adcd1234
+Enter a valid GST no.:11111111asdf
+Enter a valid GST no.:22AAAAA0000H1Z5
+Thank you.
+

@@ -1,0 +1,88 @@
+from abc import ABC, abstractmethod
+
+class BankAccount(ABC):
+    """Abstract class to enforce secure methods for all accounts"""
+    
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self._balance = balance  # Protected variable (not directly accessible)
+    
+    @abstractmethod
+    def withdraw(self, amount):
+        """Secure withdrawal method"""
+        pass
+    
+    @abstractmethod
+    def deposit(self, amount):
+        """Secure deposit method"""
+        pass
+
+    def get_balance(self):
+        """Common method to check the account balance"""
+        return f"Account: {self.account_number}, Balance: {self._balance}"
+
+class SavingsAccount(BankAccount):
+    """Subclass implementing secure banking methods"""
+    
+    def withdraw(self, amount):
+        if amount > self._balance:
+            raise ValueError("Insufficient balance!")
+        self._balance -= amount
+        print(f"Withdrew {amount}. Remaining balance: {self._balance}")
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit amount must be positive!")
+        self._balance += amount
+        print(f"Deposited {amount}. New balance: {self._balance}")
+
+class CheckingAccount(BankAccount):
+    """Another subclass implementing secure methods"""
+    
+    def withdraw(self, amount):
+        if amount > self._balance + 500:  # Overdraft limit of 500
+            raise ValueError("Exceeds overdraft limit!")
+        self._balance -= amount
+        print(f"Withdrew {amount}. Remaining balance: {self._balance}")
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit amount must be positive!")
+        self._balance += amount
+        print(f"Deposited {amount}. New balance: {self._balance}")
+
+# Usage Example
+try:
+    # Abstract class cannot be instantiated
+    # account = BankAccount(123, 1000)  # Uncommenting this will raise an error
+
+    savings = SavingsAccount(101, 5000)
+    checking = CheckingAccount(102, 2000)
+
+    savings.deposit(1000)
+    savings.withdraw(700)
+
+    checking.withdraw(2200)  # Uses overdraft
+    checking.deposit(500)
+
+    print(savings.get_balance())
+    print(checking.get_balance())
+
+except Exception as e:
+    print(f"Error: {e}")
+................................
+
+How This Protects the Code
+Prevents Improper Implementation:
+
+The abstract class BankAccount ensures that all subclasses implement secure methods for withdraw and deposit.
+If a subclass omits these methods, it cannot be instantiated.
+Encapsulates Sensitive Data:
+
+The _balance attribute is protected (_ prefix), so it is not accessible directly from outside the class. All interactions must go through secure methods (deposit, withdraw).
+Enforces Design Constraints:
+
+Developers cannot create a custom account type without adhering to the secure structure provided by the abstract class.
+Reduces the Risk of Code Misuse:
+
+By requiring all subclasses to implement withdraw and deposit methods, you prevent subclasses from having insecure or incomplete functionality.

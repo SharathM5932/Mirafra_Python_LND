@@ -1,0 +1,20 @@
+Filter the red Silk saree and display them all
+In an online shopping site, Seeta wants to buy a gorgeous red silk saree within Rs. 10K. Please save Seeta’s hours of time by not displaying many sarees with different colors and different types of sarees which are not in her budget. Instead make Seeta happy by writing a simple program which will filter and display only the red silk sarees within her budget.
+Given a string type input which consists of a dictionary where its keys are Product codes. And values are lists consisting of color, type and amount as it’s elements respectively. Please display the product codes as a list which satisfies all 3 conditions.
+Pre-requirements:
+
+Input:
+{'s1':['red','Silk',4500],'s2':['blood red','Silk',11500],'s3':['pink','Silk',11200],'s4':['rose red','Party wear',6999],'s5':['lemon yellow','Silk',8500],'s6':['brick red','Silk',8500], 's7':['Green','Party wear',8999],'s8':['brick red','cotton',1500],'s9':['Candy red','Silk',8500],'s10':['Ruby red','Silk',9999],}
+Output:
+['s1', 's6', 's9', 's10']
+....................................
+Sample case:
+Enter the product details to store it into our data base:{'s1':['red','Silk',4500],'s2':['blood red','Silk',11500],'s3':['pink','Silk',11200],'s4':['rose red','Party wear',6999],'s5':['lemon yellow','Silk',8500],'s6':['brick red','Silk',8500], 's7':['Green','Party wear',8999],'s8':['brick red','cotton',1500],'s9':['Candy red','Silk',8500],'s10':['Ruby red','Silk',9999],}
+['s1', 's6', 's9', 's10']
+.........................
+#solution:
+#{'s1':['red','Silk',4500],'s2':['blood red','Silk',11500],'s3':['pink','Silk',11200],'s4':['rose red','Party wear',6999],'s5':['lemon yellow','Silk',8500],'s6':['brick red','Silk',8500], 's7':['Green','Party wear',8999],'s8':['brick red','cotton',1500],'s9':['Candy red','Silk',8500],'s10':['Ruby red','Silk',9999],}
+saree=input('Enter the product details to store it into our data base:')
+saree=eval(saree)
+sarees=list(filter(lambda n:'red' in saree[n][0] and saree[n][1]=='Silk' and saree[n][2]<=10000 ,saree))
+print(sarees)

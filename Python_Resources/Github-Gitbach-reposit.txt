@@ -1,0 +1,111 @@
+Gitbach
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git init
+Reinitialized existing Git repository in C:/Users/Nagadeepthi MR/PycharmProjects/deepthi/.git/
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git add .
+warning: in the working copy of '.idea/inspectionProfiles/profiles_settings.xml', LF will be replaced by CRLF the next time Git touches it
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .idea/.gitignore
+        new file:   .idea/deepthi.iml
+        new file:   .idea/inspectionProfiles/profiles_settings.xml
+        new file:   .idea/misc.xml
+        new file:   .idea/modules.xml
+        new file:   .idea/vcs.xml
+        new file:   __pycache__/app.cpython-313.pyc
+        new file:   __pycache__/models.cpython-313.pyc
+        new file:   app.py
+        new file:   instance/data.db
+        new file:   models.py
+        new file:   requirements.txt
+        new file:   templates/add_user.html
+        new file:   templates/index.html
+
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git config --global user.email "nagdeepthi@gmail.com"
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git config --global user.name "DeepthiKrishna2"
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git commit -m "All files should be saved"
+[master (root-commit) 95317a8] All files should be saved
+ 14 files changed, 122 insertions(+)
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/deepthi.iml
+ create mode 100644 .idea/inspectionProfiles/profiles_settings.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/modules.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 __pycache__/app.cpython-313.pyc
+ create mode 100644 __pycache__/models.cpython-313.pyc
+ create mode 100644 app.py
+ create mode 100644 instance/data.db
+ create mode 100644 models.py
+ create mode 100644 requirements.txt
+ create mode 100644 templates/add_user.html
+ create mode 100644 templates/index.html
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git log
+commit 95317a84ed39663d0ad71ce1cc18f29c62837d6e (HEAD -> master)
+Author: DeepthiKrishna2 <nagdeepthi@gmail.com>
+Date:   Sun Feb 2 19:41:22 2025 +0530
+
+    All files should be saved
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ ls
+__pycache__/  app.py  instance/  models.py  requirements.txt  templates/  venv/
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ cd templates
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi/templates (master)
+$ ls
+add_user.html  index.html
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi/templates (master)
+$ cd ..
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git remote add dee1folder https://github.com/DeepthiKrishna2/dee1.git
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git remote -v
+dee1folder      https://github.com/DeepthiKrishna2/dee1.git (fetch)
+dee1folder      https://github.com/DeepthiKrishna2/dee1.git (push)
+
+Nagadeepthi MR@DESKTOP-H7R1RQE MINGW64 ~/PycharmProjects/deepthi (master)
+$ git push dee1folder master
+info: please complete authentication in your browser...
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 14 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (21/21), 4.61 KiB | 472.00 KiB/s, done.
+Total 21 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/DeepthiKrishna2/dee1/pull/new/master
+remote:
+To https://github.com/DeepthiKrishna2/dee1.git
+ * [new branch]      master -> master
+
+
+

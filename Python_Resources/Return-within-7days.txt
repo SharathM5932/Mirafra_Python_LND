@@ -1,0 +1,53 @@
+Return within 7 days
+Raghav being a developer wants write an app which will 
+
+check the customer name, product name and date of purchase, 
+
+if the information are matching with database and if the product has been purchased within 7 days compared with current date, 
+it can be returned without any reasons. 
+
+But if the information are not matching respective message should be displayed.
+
+Now please help Raghav by writing the code. 
+
+All the inputs should be sent from Main function to module. Create a module named ‘module1’ and a function in that named ‘returnme’.
+​​​​​​​Note: please use Datetime module to get the current date.
+Database:
+
+Sample case 1:
+Please enter the details to return the product.
+Enter your name:Narendra
+Enter the product name:Toy1
+When did you purchase the product?
+Please enter the date in mm/dd/yy format:08/01/23
+Product:Toy1 will be collected from the delivered address and amount:499 will be returned to your account.
+Thank you.
+
+Sample case 2:
+Please enter the details to return the product.
+Enter your name: Shritan
+Enter the product name:T-shirt
+When did you purchase the product?
+Please enter the date in mm/dd/yy format: 01/01/23
+Sorry! the product cannot be returned
+Thank you.
+
+Sample case 3:
+Please enter the details to return the product.
+Enter your name:some
+Enter the product name:abc
+When did you purchase the product?
+Please enter the date in mm/dd/yy format:08/01/23
+You have not purchased that product recently with us.
+Thank you.
+
+Sample case 4:
+Please enter the details to return the product.
+Enter your name:Some
+Enter the product name:Pink saree
+When did you purchase the product?
+Please enter the date in mm/dd/yy format:08/01/23
+You have not purchased that product recently with us. 
+Thank you.
+
+

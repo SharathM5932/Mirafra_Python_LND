@@ -1,0 +1,28 @@
+a={'a',3,5,6}
+b=set([1,3,'f'])
+dir(a)
+"""dir() is a powerful inbuilt function in Python3, 
+which returns list of the attributes and methods of any object 
+(say functions , modules, strings, lists, dictionaries etc.)"""
+for d in a:
+    print(a)
+a.add(3)
+a.update([2,4,6])
+print(a)
+a.remove(3)
+a.remove(10)
+b.discard(10)
+a.pop()
+print(a|b)
+c={4,5,6}
+print(a.union(b,c))
+f=(a&b)
+print(f)
+print(a.intersection(b))
+g=(a-b)
+print(g)
+print(a.difference(c))
+z=frozenset(a)
+print(set_A.symmetric_difference(set_B))
+
+

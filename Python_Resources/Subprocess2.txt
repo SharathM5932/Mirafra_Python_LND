@@ -1,0 +1,70 @@
+Subprocess
+External system processes refer to programs, commands, or applications that are running outside the current Python script but are part of the operating system or other software installed on the system. These processes are not directly written in Python but can be controlled or interacted with by Python code using modules like subprocess.
+
+Examples of External System Processes:
+Shell Commands: Any command that you would run in a terminal or command prompt, like:
+
+ls (on Unix-like systems) to list directory contents
+dir (on Windows) to list directory contents
+cat to display the contents of a file
+ping to check the connectivity to a network
+grep for searching text in files
+
+System Programs: These include built-in programs provided by the operating system, such as:
+notepad (Windows) to open the Notepad application
+firefox to open the Firefox web browser
+..............................................
+.........................................................
+
+#1. This runs a simple command like ls (on Unix-like systems) or dir (on Windows) to list the files in the current directory.
+import subprocess
+#subprocess.run(["ls"])  # For Unix/Linux/MacOS
+subprocess.run(["dir"], shell=True)  # For Windows
+................................
+2. Capturing Output of a Command:
+#On Windows, commands like echo, dir, and cd are shell built-in commands, not standalone executables. They only work if shell=True is used.
+#remove 'shell=True' it won't work
+
+result = subprocess.run(["echo", "Hello, World!"], shell=True, capture_output=True, text=True)
+print(result.stdout)  # Output: Hello, World!
+
+..................................
+3. Running a Command with Arguments:
+import subprocess
+result = subprocess.run(["findstr", "hello"], input="hello world\nhello python", shell=True, capture_output=True, text=True)
+print(result.stdout)  # Output: hello world \n hello python
+......................................
+4. Handling Errors:
+You can capture and handle errors with the check=True argument, which raises a subprocess.CalledProcessError if the command returns a non-zero exit status.
+
+import subprocess
+
+try:
+    subprocess.run("dir nonexistent_directory", shell=True, check=True)
+except subprocess.CalledProcessError as e:
+    print(f"Error occurred: {e}")
+..................................
+5. Using Popen for More Control:
+You can use subprocess.Popen() for more complex use cases, such as interacting with the process while it's running.
+
+import subprocess
+# Open a process and communicate with it
+process = subprocess.Popen(["findstr", "hello"], shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+stdout, stderr = process.communicate(input="hello world\nhello python")
+print(stdout)  # Output: hello world\nhello python
+........................................
+Handling Shell Commands Safely: The subprocess module provides a secure way to run system commands. Unlike older methods like os.system(), it avoids potential security issues (e.g., command injection attacks) by separating the command from the arguments and using proper process management.
+...............................
+6. Running a Shell Command:
+You can run shell commands by setting shell=True. Be careful with this, as it can be a security risk if you're using user input.
+
+import subprocess
+# Running a shell command
+subprocess.run("echo Hello from the shell", shell=True)
+.......................................
+7. Redirecting Output to a File:
+You can redirect the output of a command to a file.
+
+import subprocess
+with open("output.txt", "w") as f:
+    subprocess.run("echo Hello, file!", shell=True, stdout=f, text=True)

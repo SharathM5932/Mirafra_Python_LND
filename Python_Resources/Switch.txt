@@ -1,0 +1,47 @@
+def hotel(x):
+    menu = {
+        0: "idli",
+        1: "Dosa",
+        2: "Roti",
+    }
+    return menu.get(x, "not available")
+
+
+a = int(input("what would you like to have"))
+b = hotel(a)
+print(b)
+
+
+----------------------------------------------------------	
+#Switch with function call as value of Dictionary
+
+def menu():
+    print("1:dosa \n 2:idli")
+    choice=int(input("enter your choice:"))
+    def dosa():
+        print("paper,masala")
+    def idli():
+        print("plain,rava")
+    dict={
+        1:dosa,
+        2:idli,
+    }
+    dict.get(choice)()
+menu()
+
+--------------------------------------
+#switch with if
+def menu():
+    print("1:sum \n 2:sub \n 3:mul")
+    choice=int(input("enter your choice:"))#1
+    if choice==1:
+        print("paper,masala")
+    elif choice==2:
+        print("plain,rava")
+    else:
+        print('bye')
+
+menu()
+
+
+

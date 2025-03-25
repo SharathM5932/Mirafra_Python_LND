@@ -1,0 +1,43 @@
+from datetime import date
+from datetime import datetime
+from datetime import time
+from datetime import timedelta
+import time
+import datetime
+print(datetime.datetime.today())
+#from how long I'm using PyCharm in secs
+print(time.time())
+print(time.localtime())
+print(date.today())
+#print(datetime.now())'''
+i=date.today()
+print("today'd date is:", i.day,'/',i.month, i.year,i.weekday())
+i=datetime.datetime.now()
+print(i.strftime("%a, %d, %b, %y"))
+print(i.strftime("%A, %d, %B, %Y"))
+print(i.strftime('%c'))
+print(i.strftime('%x'))
+print(i.strftime('%X'))
+i=datetime.datetime.now()
+print('today:',i)
+print(timedelta(days=365,hours=8,minutes=45))
+print('one year from now:'+str(datetime.datetime.now()+timedelta(days=455,hours=3)))
+----------------------------------------------------------------------------
+import calendar
+'''a=calendar.TextCalendar(calendar.MONDAY)
+b=a.formatmonth(2019,1)
+print(b)
+year=2020
+print(calendar.calendar(1989))'''
+for i in calendar.month_name: print(i)
+a=calendar.TextCalendar(calendar.MONDAY)
+
+for i in a.itermonthdays(2012,2): print(i)
+a=calendar.HTMLCalendar(calendar.MONDAY)
+b=a.formatmonth(2019,1)
+print(b)
+
+
+
+
+

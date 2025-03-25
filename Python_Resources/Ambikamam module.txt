@@ -1,0 +1,33 @@
+main.py
+from Ambikamam import welcome
+welcome()
+...........................
+pip install sketchpy
+#Ambikamam.py
+from sketchpy import canvas
+def welcome():
+
+    obj=canvas.sketch_from_image('C:\\Users\\S KRISHNA\\Desktop\\ambika-natarajan.jpg')
+    obj.draw()
+...........................
+pip install opencv-python
+#Ambikamam.py
+import cv2
+def welcome():
+    image=cv2.imread('C:\\Users\\S KRISHNA\\Desktop\\ambika-natarajan.jpg')
+    gray_filter=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    invert=cv2.bitwise_not(gray_filter)
+    blur=cv2.GaussianBlur(invert,(25,25),0)
+    invertedblur=cv2.bitwise_not(blur)
+    sketch_filter=cv2.divide(gray_filter, invertedblur,scale=250.0)
+    dsize = (1000, 1000)
+    # resize image
+    out = cv2.resize(sketch_filter, dsize)
+    cv2.imwrite('output2.png',out)
+...........................
+#Or #Ambikamam.py
+import cv2
+def welcome():
+    image=cv2.imread('C:\\Users\\S KRISHNA\\Desktop\\ambika-natarajan.jpg')
+    gray_filter=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    cv2.imwrite('output1.png',gray_filter)

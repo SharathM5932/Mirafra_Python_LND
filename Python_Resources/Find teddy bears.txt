@@ -1,0 +1,35 @@
+Find teddy bears
+Surya is working for a mart as shelf-stacker or shelf filler.  One whole floor of the mart is filled with gifts and toys where Surya has to place products on shelves in time, every time. The store manager has given the instruction to Surya that, tonight before leaving to home Surya should place all the teddy bears with different colors, size and brands in one shelf so that it will become easy for a customer to choose amongst them. 
+Surya has to collect all the teddy bear toys/stuffed toys from a cotton box along with other products kept in the store room. Please help Surya by writing a program to find all kind of teddy bears from a string, store it as a list, count them and display both.
+
+Input:
+stuffed toy teddy, special one, toy teddy, love toy, teddy bear, pink teddy, red teddy, Mr. teddy, my bear, love bear, deer, gift me
+Output:
+Dear Surya,
+Total 6 teddies are there. And, here they are:
+['stuffed toy teddy', 'toy teddy', 'teddy bear', 'pink teddy', 'red teddy', 'Mr. teddy']
+.........................
+
+Sample case:
+Enter the name of products stored in the cotton box:stuffed toy teddy, special one, toy teddy, love toy, teddy bear, pink teddy, red teddy, Mr. teddy, my bear, love bear, deer, gift me
+Dear Surya,
+Total 6 teddies are there. And, here they are:
+['stuffed toy teddy', 'toy teddy', 'teddy bear', 'pink teddy', 'red teddy', 'Mr. teddy']
+...................................
+#Solution:
+#s=stuffed toy teddy, special one, toy teddy, love toy, teddy bear, pink teddy, red teddy, Mr. teddy, my bear, love bear, deer, gift me
+s=input('Enter the name of products stored in the cotton box:')
+def word_count(str):
+    count = 0
+    words = str.split(', ')
+    l=[]
+
+    for word in words:
+        if 'teddy' in word:
+            count += 1
+            l.append(word)
+    print('Total', count, 'teddies are there. And, here they are:')
+    return l
+print('Dear Surya,')
+print( word_count(s))
+........................................

@@ -1,0 +1,84 @@
+#install in virtual box's windows
+#CRUD
+''' in Run Sql command line:
+connect
+user name:deepthi52
+p.w:deepthi'''
+.......................................
+'''#Database(Oracle 11g) need not be be installed to pc in command line:
+pip install cx_Oracle#(underscore)
+
+#how to check cx_Oracle is installed or not in IDLE?
+>>> help('cx_Oracle')
+displays nothing
+
+install in pycharm: only while installing module name is 'cx-Oracle'(dash)'''
+....................................................................
+#Connection
+import cx_Oracle
+connection=cx_Oracle.connect('deepthi51/deepthi@localhost')
+cursor=connection.cursor()
+print(connection.version)
+#Create
+'''cursor.execute('create table student(name varchar(20),id int,fee number(10,2))')
+print('Table created successfully')
+cursor.execute("insert into student (name,id,fee) values('Rajesh',1,10.45)")
+cursor.execute("insert into student values('Ibrahim',2,11.234)")
+cursor.execute("insert into student values('Sahastra',3,12.23)")
+cursor.execute("insert into student values('Harsh',4,13.2)")
+connection.commit()
+..........................................................................
+#read
+cursor.execute('select * from student')
+for i,j,k in cursor: print(i,j,k)
+
+cursor.execute("""select name,fee from student where id=2""")
+for i,j in cursor: print(i,j,)
+
+cursor.execute("insert into student values('Rushi',5,13.2)")
+cursor.execute("""select name from student where fee=:hi""",hi=13.2)
+for i in cursor: print('Name=',i)
+
+for r in cursor.execute('select * from student'): print(r)
+
+sql='select * from student'
+rec=cursor.execute(sql)
+result=rec.fetchall()
+for i in result: print(i)
+...........................................................................
+#update
+#cursor.execute("update student set name='Karan' where id=2")
+cursor.execute("update student set fee=11.23 where name='Sahastra'")
+#connection.commit()
+cursor.execute("update student set name='Karan' where fee=11.23")
+cursor.execute('select * from student')
+for i,j,k in cursor: print(i,j,k)
+.....................................................................
+#Delete
+cursor.execute("delete student where id=3")
+cursor.execute("insert into student values('Sahastra',3,12.23)")
+connection.commit()
+cursor.execute('select * from student')
+for i,j,k in cursor: print(i,j,k)
+#Delete the table
+#cursor.execute('drop table student')
+cursor.close()
+
+.............................................................
+#Can execute all the instruction w.r.t. Oracle 11g
+...................................................
+#try
+import cx_Oracle
+try:
+    c = cx_Oracle.connect('deepthi1/deepthi@localhost')
+    cursor = c.cursor()
+    #cursor.execute("create table sandeep(LCODE VARCHAR2(15), LNAME VARCHAR2(15))")
+    cursor.execute("INSERT INTO sandeep(LCODE,LNAME)VALUES('LOC1','GTP')")
+    print("Table got created successfully")
+except cx_Oracle.DatabaseError as e:
+    print('check your user id and password')
+finally:
+    if cursor: cursor.close()
+    if c: c.close()
+
+

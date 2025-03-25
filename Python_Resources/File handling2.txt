@@ -1,0 +1,81 @@
+a=open('adarsh.txt','w+')
+for i in range(10):
+    a.write('line %d \n'%(i+1))
+a.close()
+#capitalize the 1st letter of every sentence in the file
+f=open('adarsh.txt','r')
+for line in f:
+    output=line.title()
+    print(output)
+f.close()
+.................................
+#count lines
+count=0
+for line in open('adarsh.txt').readlines(): count+=1
+print(count)
+..........................
+#reverse the content
+f1=open('sadvik.txt','w')
+with open('adarsh.txt','r') as myfile: data=myfile.read()
+#myfile=open('adarsh.txt','r')
+#data=myfile.read()
+data_1=data[::-1]
+f1.write(data_1)
+f1.close()
+------------------------------------------
+import json
+a=open('lakshmi.txt','w+')
+a.write('''Python too supports file handling and allows users to 
+handle files i.e., to read and write files, along with many other 
+file handling options, to operate on files. ... Python treats file 
+differently as text or binary and this is important. 
+Each line of code includes a sequence of characters and 
+they form text file.''')
+a.close()
+with open('lakshmi.txt','r') as my:
+    data=my.read()
+with open('lakshmi.txt') as f:
+    output=open('likitha.json','w')
+    for l in f:
+        d=list(l.strip().split())
+        json.dump(d,output)
+        output.write('\r\n')
+output.close()
+----------------------------------------------
+#move file
+import shutil
+source='C:\\Users\\S KRISHNA\\PycharmProjects\\batch bee\\lakshmi.txt'
+destination='C:/Users/S KRISHNA/PycharmProjects/batch2'
+dest=shutil.move(source,destination)
+print(dest)
+
+#deleting
+import os
+f='deepthi2.txt'
+location='C:/Users/S KRISHNA/PycharmProjects/batch bee'
+path=os.path.join(location,f)
+os.remove(path)
+-----------------------
+#copy file
+import shutil
+from os import path
+if path.exists('bhavadharini.txt'):
+    a=path.realpath('bhavadharini.txt')
+(p,f)=path.split(a)
+print('Path:',p)
+print('File:',f)
+b='bhava1.txt'
+shutil.copy(a,b)
+..........................
+#rename
+import os
+os.rename('bhava1.txt','final.txt')
+..........................
+
+#Zip/ creating archive
+from os import path
+import shutil
+if path.exists('deepthi1.txt'):
+    a=path.realpath('deepthi1.txt')
+    (p,f)=path.split(a)
+    shutil.make_archive('arch','zip',p)   

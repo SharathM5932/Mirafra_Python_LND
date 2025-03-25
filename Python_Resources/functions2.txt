@@ -1,0 +1,50 @@
+#nested functions
+def outside(a):
+    def inside():return a
+    return inside()
+print(outside(1))
+
+#nested functions
+def outside(a):
+    def inside():return a()+1
+    return inside
+def onemore():return 6
+haha=outside(onemore)
+print(haha())
+
+sum=lambda a,b:a+b
+c=sum(1,2)
+print(c)
+print(sum('a','b'))
+
+#filter
+num=[1,2,3,4,5,6,7,8]
+even1=list(filter(lambda n:n%2==0,num))
+print(even1)
+color=['red','red','pink','brown','black','red']
+red=list(filter(lambda n:n=='red',color))
+print(red)
+
+#map
+even2=list(map(lambda n:n+3,num))
+print(even2)
+
+#reduce
+from functools import reduce
+a=reduce(lambda a,b:a+b,num)
+print(a)'''
+
+num=[1,2,3,4,5,6,7,8]
+print(sum(num))
+
+#factorial
+#5=5*4*3*2*1*0
+
+def fact(n):
+    if n==0:return 1
+    return n*fact(n-1)#=5*4*3**2*1*1
+n=int(input())
+print(fact(n))#5
+
+import math
+print(math.factorial(0))

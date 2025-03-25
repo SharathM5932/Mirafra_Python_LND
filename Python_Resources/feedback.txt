@@ -1,0 +1,50 @@
+Feedback
+A online selling shop wants to store all the feedbacks on every product from its customers. So that, it can decide weather to sale that product in their site or not. 
+Being a developer write a program which will ask the customer’s name, product name and feedback and prints thank you message at last. Based on the product name a file should be created if not there and with the customer’s name the feedback should be stored into the file. If the product’s named file already exists it should just add the current feedback to that file itself.
+
+
+Sample case 1:
+Enter your name:sagar
+Enter the product name:Toy1
+Write your feedback here and help us to improve the service:
+Awesome product
+Thank you for your valuable feedback on the product.
+
+Enter your name:Deepthi
+Enter the product name:Toy1
+Write your feedback here and help us to improve the service:
+Loved it
+Thank you for your valuable feedback on the product.
+
+Toy1.txt:
+
+sagar says: Awesome product
+Deepthi says: Loved it
+
+Sample case 2:
+Enter your name:sagar
+Enter the product name:sketch pen
+Write your feedback here and help us to improve the service:
+This product should not be sold.
+Thank you for your valuable feedback on the product.
+
+Sketch pen.txt:
+sagar says: This product should not be sold.
+....................................
+#Solution:
+name=input('Enter your name:')
+pname=input('Enter the product name:')
+print('Write your feedback here and help us to improve the service:')
+feed=input()
+print('Thank you for your valuable feedback on the product.')
+'''Awesome product
+Loved it
+Great product'''
+"""Bad quality.
+This product should not be sold.
+very bad."""
+f1=pname+'.txt'
+a=open(f1,"a+")
+
+a.write(name+' says: '+feed+'\n')
+

@@ -1,0 +1,61 @@
+No. 3. Write a Python program to create a class and display the namespace of the said class.
+
+Python Code:
+
+class py_solution:
+    def sub_sets(self, sset):
+        return self.subsetsRecur([], sorted(sset))    
+    def subsetsRecur(self, current, sset):
+        if sset:
+            return self.subsetsRecur(current, sset[1:]) + self.subsetsRecur(current + [sset[0]], sset[1:])
+        return [current]
+for name in py_solution.__dict__:
+    print(name)
+
+Sample Output:
+
+__module__
+sub_sets
+subsetsRecur
+__dict__
+__weakref__
+__doc__
+---------------------------------------
+Write a Python class named Student with two attributes student_name, marks. Modify the attribute values of the said class and print the original and modified values of the said attributes.
+
+Python Code:
+
+class Student:
+    student_name = 'deepthi'
+    marks = 90  
+print(f"Student Name: {getattr(Student, 'student_name')}")
+print(f"Marks: {getattr(Student, 'marks')}")
+setattr(Student, 'student_name', 'sthuthi')
+setattr(Student, 'marks', 91) 
+print(f"Student Name: {getattr(Student, 'student_name')}")
+print(f"Marks: {getattr(Student, 'marks')}")
+-----------------------------------------
+#startswith() method returns a boolean. It returns True if the string starts with the specified prefix. 
+6. Write a Python class named Student with two attributes student_id, student_name. Add a new attribute student_class and display the entire attribute and their values of the said class. Now remove the student_name attribute and display the entire attribute with values.
+
+Python Code:
+
+class Student:
+    student_id = 'V10'
+    student_name = 'Jacqueline Barnett'  
+print("Original attributes and their values of the Student class:")
+for attr, value in Student.__dict__.items():
+    if not attr.startswith('_'):
+        print(f'{attr} -> {value}')
+print("\nAfter adding the student_class, attributes and their values with the said class:")
+Student.student_class  = 'V'
+for attr, value in Student.__dict__.items():
+    if not attr.startswith('_'):
+        print(f'{attr} -> {value}')
+print("\nAfter removing the student_name, attributes and their values from the said class:")
+del Student.student_name
+#delattr(Student, 'student_name')
+for attr, value in Student.__dict__.items():
+    if not attr.startswith('_'):
+        print(f'{attr} -> {value}')
+-------------------------------------------

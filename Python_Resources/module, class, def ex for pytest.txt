@@ -1,0 +1,74 @@
+module, class, def ex for pytest
+
+# shopping_system.py
+
+class LoginSystem:
+    def login(self, username, password):
+        # Dummy login function: success if username is "user" and password is "password"
+        if username == "user" and password == "password":
+            return "success"
+        else:
+            return "failure"
+
+class CheckoutSystem:
+    def checkout(self, cart):
+        # Dummy checkout function: success if cart is not empty
+        if cart:
+            return "checkout successful"
+        else:
+            return "cart is empty"
+
+class PaymentGateway:
+    def process_payment(self, amount):
+        # Dummy payment function: success if amount is greater than 0
+        if amount > 0:
+            return "payment successful"
+        else:
+            return "payment failed"
+
+...............................................
+# test_shopping_system.py
+import pytest
+from shopping_system import LoginSystem, CheckoutSystem, PaymentGateway
+
+# Test class for LoginSystem
+@pytest.mark.smoke
+class TestLoginSystem:
+    def test_login_success(self):
+        login_system = LoginSystem()
+        result = login_system.login("user", "password")
+        assert result == "success"
+    
+    def test_login_failure(self):
+        login_system = LoginSystem()
+        result = login_system.login("user", "wrongpassword")
+        assert result == "failure"
+
+# Test class for CheckoutSystem
+@pytest.mark.regression
+class TestCheckoutSystem:
+    def test_checkout_success(self):
+        checkout_system = CheckoutSystem()
+        cart = ["item1", "item2"]
+        result = checkout_system.checkout(cart)
+        assert result == "checkout successful"
+    
+    def test_checkout_empty_cart(self):
+        checkout_system = CheckoutSystem()
+        cart = []
+        result = checkout_system.checkout(cart)
+        assert result == "cart is empty"
+
+# Test class for PaymentGateway
+@pytest.mark.integration
+class TestPaymentGateway:
+    def test_payment_success(self):
+        payment_gateway = PaymentGateway()
+        result = payment_gateway.process_payment(100)
+        assert result == "payment successful"
+    
+    def test_payment_failure(self):
+        payment_gateway = PaymentGateway()
+        result = payment_gateway.process_payment(0)
+        assert result == "payment failed"
+

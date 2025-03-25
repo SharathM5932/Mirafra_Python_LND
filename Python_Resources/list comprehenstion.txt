@@ -1,0 +1,172 @@
+#Expected output:[1, 'h', 3, 'f', 5, 'd', 7, 'b']
+#Given Input:
+a=[1,2,3,4,5,6,7,8,9,10]
+b='abcdefghi'
+
+#Source code:
+c = a[0::2]
+d=b[::-1]
+e=d[1::2]
+def countList(c, e):
+    return [sub[item] for item in range(len(e))
+            for sub in [c, e]]
+print(countList(c, e))
+-------------------------------------------------------------
+#1**0=1
+#0**1=0=0**+1
+x = [i**+1 for i in range(3)]; print(x);
+--------------
+a=[i+j for i in "abc" for j in "def"]
+#['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']
+---------------
+print([[i+j for i in "abc"] for j in "def"])
+[['ad', 'bd', 'cd'], ['ae', 'be', 'ce'], ['af', 'bf', 'cf']]
+-------------
+#wrong
+#if statement cannot be used in list comprehension
+*print([if i>2: i; else: i+1; for i in range(4)])*
+--------------------
+my_string='hi all welcome'
+k = [i for i in my_string if i not in "aeiou"]
+-----------------------------
+k = [print(i) for i in my_string if i not in "aeiou"]
+print(k)
+#k will have only None values
+--------------------------
+my_string = "hello world"
+#create a tuple, in that convert all the elements into upper 
+#and length of that perticular element(which is always 1)
+>>> k = [(i.upper(), len(i)) for i in my_string]
+>>> k
+[('H', 1), ('E', 1), ('L', 1), ('L', 1), ('O', 1), (' ', 1), ('W', 1), ('O', 1), ('R', 1), ('L', 1), ('D', 1)]
+-------------------------------------------------------------
+#list comprehension
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = [x for x in range(10) if x < 5]
+print(newlist)
+newlist = [x.upper() for x in fruits]
+print(newlist)
+newlist = ['hello' for x in fruits]
+print(newlist)
+['hello', 'hello', 'hello', 'hello', 'hello']
+newlist = [x if x != "banana" else "orange" for x in fruits]
+print(newlist)
+['apple', 'orange', 'cherry', 'kiwi', 'mango']
+letters = list(map(lambda x: x, 'human'))
+print(letters)
+['h', 'u', 'm', 'a', 'n']
+n= [ x for x in range(20) if x % 2 == 0]
+print(n)
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+num_list = [y for y in range(100) if y % 2 == 0 if y % 5 == 0]
+print(num_list)
+[0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+obj = ["Even" if i%2==0 else "Odd" for i in range(10)]
+print(obj)
+['Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd']
+-----------------------
+transposed=[]
+matrix=[[1,2,3,4],[4,5,6,8]]
+for i in range(len(matrix[0])):#=(0,4)
+    transposed_row=[]
+    for row in matrix:
+        #print(row)
+        transposed_row.append(row[i])#i=1
+    #print(transposed_row)
+    transposed.append(transposed_row)
+print(transposed)
+'''
+1 2 3 4
+4 5 6 8
+1 4
+2 5
+3 6
+4 8
+'''
+
+output:[[1, 4], [2, 5], [3, 6], [4, 8]]
+---------------
+#reverse
+matrix = [[1, 2], [3,4], [5,6], [7,8]]
+transpose = [[row[i] for row in matrix] for i in range(2)]
+print (transpose)
+----------------------
+#Accessing nth element from tuples in list
+# get nth tuple element from list
+# using list comprehension 
+  
+# initializing list of tuples
+test_list = [(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]
+  
+# printing original list 
+print ("The original list is : " + str(test_list))
+  
+# using list comprehension to get names
+res = [lis[1] for lis in test_list]
+      
+# printing result
+print ("List with only nth tuple element (i.e names) : " + str(res))
+Output :
+
+The original list is : [(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]
+List with only nth tuple element (i.e names) : ['Rash', 'Varsha', 'Kil']
+-----------------------------------------------
+Method #2 : Using map() + itemgetter()
+map() coupled with itemgetter() can perform this task in more simpler way. map() maps all the element we access using itemgetter() and returns the result.
+#Same string+ 
+# using map() + itergetter() to get names
+from operator import itemgetter
+res = list(map(itemgetter(1), test_list))
+----------------------------------------------------------------------------------
+# Aggregate values by tuple keys
+# Python3 code to demonstrate working of
+# Aggregate values by tuple keys
+# using Counter() + generator expression
+from collections import Counter
+test_list = [('gfg', 50), ('is', 30), ('best', 100), 
+                          ('gfg', 20), ('best', 50)]
+
+print("The original list is : " + str(test_list))
+res = list(Counter(key for key, num in test_list 
+                  for idx in range(num)).items())
+  
+# printing result
+print("List after grouping : " + str(res))
+Output :
+The original list is : [('gfg', 50), ('is', 30), ('best', 100), ('gfg', 20), ('best', 50)]
+List after grouping : [('best', 150), ('gfg', 70), ('is', 30)]
+----------------------------------------------------------------
+Method #2 : Using groupby() + map() + itemgetter() + sum()
+The combination of above functions can also be used to perform this particular task. In this, we group the elements using groupby(), decision of key’s index is given by itemgetter. Task of addition(aggregation) is performed by sum() and extension of logic to all tuples is handled by map().
+
+
+# Python3 code to demonstrate working of
+# Aggregate values by tuple keys
+# using groupby() + map() + itemgetter() + sum()
+from itertools import groupby
+from operator import itemgetter
+  
+# initialize list
+test_list = [('gfg', 50), ('is', 30), ('best', 100),
+                          ('gfg', 20), ('best', 50)]
+  
+# printing original list
+print("The original list is : " + str(test_list))
+  
+# Aggregate values by tuple keys
+# using groupby() + map() + itemgetter() + sum()
+res = [(key, sum(map(itemgetter(1), ele)))
+       for key, ele in groupby(sorted(test_list, key = itemgetter(0)), 
+                                                key = itemgetter(0))]
+  
+# printing result
+print("List after grouping : " + str(res))
+Output :
+The original list is : [('gfg', 50), ('is', 30), ('best', 100), ('gfg', 20), ('best', 50)]
+List after grouping : [('best', 150), ('gfg', 70), ('is', 30)]
+-----------------------------------------------------------------------------
+
+from collections import Counter
+_count = Counter()
+_count.update('Welcome to Guru99 Tutorials!')
+print(_count)

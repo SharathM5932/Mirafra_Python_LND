@@ -1,0 +1,11 @@
+1. Reverse an Integer Without Converting to String
+2. Check if Two Strings are Anagrams
+3. Find the First Non-Repeating Character. input="swiss"
+4. Find the Missing Number in an Array.input=[1, 2, 3, 5]
+5. Find the Longest Palindromic Substring. input= babad
+6. Find the Majority Element (Appears More than n/2 times). input=[3, 2, 3]
+7. Find Duplicate Number (Array of n+1 Integers). input=[3, 1, 3, 4, 2]
+8. Find the Longest Consecutive Sequence. input= [100, 4, 200, 1, 3, 2]. output = 4
+9. Check if a Number is Power of Two.
+10. Find All Subsets of an Array.input= [1, 2, 3] 
+# Output: [[], [1], [2], [1,2], [3], [1,3], [2,3], [1,2,3]]

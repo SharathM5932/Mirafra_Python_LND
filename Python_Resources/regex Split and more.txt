@@ -1,0 +1,76 @@
+#finditer
+
+import re
+s="rama, radha, krishna"
+for i in re.finditer("radha",s):
+    j=i.span()
+    print(j)
+-----------------------------------------------------------
+#Split
+
+import re
+print(re.split(r'a','an animal came to eat an apple'))
+----------------------------------------------------------
+#Match
+
+import re
+list="lamb lambda", "lotus lack", "lion leather"
+for i in list:
+    b=re.match("(l\w+)\W(l\w+)",i)
+    if b:
+        print(b.groups())
+-------------------------------------------------------
+#search
+
+import re
+t='Python is an interpreted, high-level, general-purpose programming language'
+p='Python'
+print(re.search(p,t))
+......................
+import re
+text = "Do you use $ or ^ in regex?"
+escaped_text = re.escape(text)
+print("Escaped string:", escaped_text)
+.........................
+text = "The rain in Spain falls mainly in the plain."
+result = re.subn(r"in", "IN", text)
+print("After substitution:", result[0])
+print("Number of substitutions:", result[1])
+.....................
+text = "apple, banana; grape, mango"
+result = re.split(r", |; ", text)
+print("After split:", result)
+........................
+text = "Python is Fun!"
+match = re.search(r"python", text, re.IGNORECASE)
+if match:
+    print("Found:", match.group())
+........................
+text = "Name: John, Age: 25"
+match = re.match(r"Name: (\w+), Age: (\d+)", text)
+if match:
+    print("Name:", match.group(1))
+    print("Age:", match.group(2))
+........................
+text = "aa bb ccc dddd"
+matches = re.finditer(r"\w{2,}", text)
+# Match words with 2 or more characters
+for match in matches:
+    print("Match:", match.group())
+...................
+text = "My number is 12345."
+result = re.sub(r"\d", "*", text)
+print("After substitution:", result)
+..........................
+text = "apple;banana,grape|mango"
+result = re.split(r"[;,|]", text)  # Delimiters: ; , |
+print("After split:", result)
+..............
+text = "I am running, swimming, and coding."
+matches = re.findall(r"\b\w+ing\b", text)
+print("Words ending with 'ing':", matches)
+.......................
+#Find palindromic words in a string using regex.
+text = "madam and racecar are palindromes, but apple is not."
+matches = re.findall(r"\b(\w)(\w)?\w?\2\1\b", text)
+print("Palindromic words:", matches)

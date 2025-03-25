@@ -1,0 +1,52 @@
+In Python, \r is a carriage return character. It is part of the escape sequence family and is represented by the ASCII code 13. The \r moves the cursor back to the start of the line.
+"Goodbye!" overwrites "Hello, World!" from the beginning.
+
+print("Hello, World!\rGoodbye!")
+output: Goodbye!
+....................................
+To write a carriage return (\r) with a new line (\n) in Python, you can combine the two as \r\n. This combination ensures the cursor moves to the beginning of the line (\r) and also moves down to the next line (\n).
+
+print("Hello, World!\r\nWelcome to Python")
+......................
+print("Hello\tWorld")
+........................
+Inserts a vertical tab (rarely used; moves to the next vertical tab stop).
+print("Hello\vWorld")
+op:Hello
+......................
+Advances the output to the next page or clears the screen (depending on the environment).
+
+print("Hello\fWorld")
+
+Output (depends on terminal):
+Hello
+     World
+..........................
+Space (\x20)
+The hexadecimal representation of a space character.
+
+print("Hello\x20World")
+Output: Hello World
+..........................
+ Backspace (\b)
+Moves the cursor one character back (removes the previous character visually).
+
+print("Hello\bWorld")
+Output: HellWorld
+..........................
+Null Character (\0)
+Represents a null character (does not produce visible output).
+
+print("Hello\0World")
+Output:HelloWorld
+.......................
+Escape Character	Description
+\n	Newline
+\r	Carriage return
+\t	Horizontal tab
+\v	Vertical tab
+\f	Form feed
+\b	Backspace
+\x20	Space (hexadecimal)
+\0	Null character
+..........................

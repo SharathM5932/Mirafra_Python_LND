@@ -1,0 +1,30 @@
+Check location for product delivery
+Usually online grocery, vegetable, fruit and food delivery stores have to check for location reachability in 1 or 2 days. Because if the quick delivery is not possible, customer may no longer need the product.
+Now as a precaution, write a program which will ask the customer to enter the full address(with or without postal code) or just city name which will help online shop to reach the customer in time. 
+Store some city names along with its postal pin code which will act as your database. If the city name is not preset in the database, display  a sorry message. If the city name is preset in the database display its pin code and a suitable message along with it.
+Data:
+
+Sample case 1:
+Enter the full address or just city name:BANGALORE
+Postal code is: 560000
+We can reach you in time...
+
+Sample case 2:
+Enter the full address or just city name:#1,1st main,1st cross,Bhabgat singh layout, Rajguru Nagar, Bangalore
+Postal code is: 560000
+We can reach you in time...
+
+Sample case 3:
+Enter the full address or just city name:#1,1st main,1st cross,Bhabgat singh layout, Rajguru Nagar, Bangalore, 560032
+Postal code is: 560000
+We can reach you in time...
+
+Sample case 4:
+Enter the full address or just city name:bla bla
+Sorry! the product cannot be delivered to the address you are entering.
+
+Sample case 5:
+Enter the full address or just city name:1234
+Sorry! the product cannot be delivered to the address you are entering.
+
+

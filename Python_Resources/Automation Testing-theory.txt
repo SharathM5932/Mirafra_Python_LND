@@ -1,0 +1,19 @@
+Automation Testing
+Definition: It is the process of using tools and scripts to execute tests automatically, reducing manual effort.
+Scope: Automation can be applied to any type of testing, including:
+Unit Testing
+Integration Testing
+Functional Testing
+Regression Testing, etc.
+Purpose: The goal is to improve efficiency, speed, and consistency in testing processes.
+Tools: Selenium, Pytest, JUnit, TestNG, Postman (for API testing), Tox, etc.
+
+Example:
+All unit tests, pytests and integration tests runs with commands are examples for Automation Testing
+python -m unittest test_app.py
+pytest test_app.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

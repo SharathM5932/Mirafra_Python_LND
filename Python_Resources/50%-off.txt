@@ -1,0 +1,82 @@
+50% off
+enter return
+‘XYZ’ is a fair price shop. The store has declared flat 50% off on wheat flour and if the customer purchases 2KGs sugar then they will get 50% off on that. Now suppose, the customer buys 1KG sugar the price will not be reduced and if the customer purchases 5KG sugar, with price 50 Rs./KG then, the customer have to pay Rs. 150. The data/items list and their respective prices are given below.
+Note that the offs are there on Sugar and wheat flour only. And customer can ask for one product at a time but the quantity can be asked according to their need.
+
+Sample case 1:
+Welcome to our shop.The list items:
+Product:Price in Rs.
+Rava:70
+Rice:55
+Sugar:50
+Toor dal:150
+Wheat flour:55
+For your surprise we have offers going on:
+Buy 2 KGs Sugar and get 50% off and flat 50% off on Wheat flour.
+Enter the item name:Toor dal
+Enter the quantity in KGs:1
+You have asked for  1 KG Toor dal 
+Please pay Rs.: 150
+
+Sample case 2:
+Welcome to our shop.
+The list items:
+Product:Price in Rs.
+Rava:70
+Rice:55
+Sugar:50
+Toor dal:150
+Wheat flour:55
+For your surprise we have offers going on:
+Buy 2 KGs Sugar and get 50% off and flat 50% off on Wheat flour.
+Enter the item name:Sugar
+Enter the quantity in KGs:2
+You have asked for 2 KGs Sugar.
+Please pay Rs.:50
+
+Sample case 3:
+Welcome to our shop.
+The list items:
+Product:Price in Rs.
+Rava:70
+Rice:55
+Sugar:50
+Toor dal:150
+Wheat flour:55
+For your surprise we have offers going on:
+Buy 2 KGs Sugar and get 50% off and flat 50% off on Wheat flour.
+Enter the item name:Wheat flour
+Enter the quantity in KGs:2
+You have asked for  2 KG Wheat flour 
+Please pay Rs.: 55.0
+
+Sample case 4:
+Welcome to our shop.
+The list items:
+Product:Price in Rs.
+Rava:70
+Rice:55
+Sugar:50
+Toor dal:150
+Wheat flour:55
+For your surprise we have offers going on:
+Buy 2 KGs Sugar and get 50% off and flat 50% off on Wheat flour.
+Enter the item name:abc
+Enter the item name present in our shop and try again.
+
+Sample case 5:
+Welcome to our shop.
+The list items:
+Product:Price in Rs.
+Rava:70
+Rice:55
+Sugar:50
+Toor dal:150
+Wheat flour:55
+For your surprise we have offers going on:
+Buy 2 KGs Sugar and get 50% off and flat 50% off on Wheat flour.
+Enter the item name:Sugar
+Enter the quantity in KGs:a
+Please enter an integer value.
+
+

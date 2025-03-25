@@ -1,0 +1,113 @@
+Structural Design Patterns in Python
+Structural design patterns help in organizing classes and objects to build large, flexible, and maintainable applications. They focus on how objects and classes interact with each other.
+
+1. Adapter Pattern (Converting Interface)
+The Adapter Pattern allows incompatible interfaces to work together. It acts as a bridge between two different interfaces.
+
+# Base Component
+class Coffee:
+    def cost(self):
+        return 5  # Base cost of coffee
+
+# Decorator
+class MilkDecorator:
+    def __init__(self, coffee):
+        self.coffee = coffee
+
+    def cost(self):
+        return self.coffee.cost() + 2  # Adding cost of milk
+
+class SugarDecorator:
+    def __init__(self, coffee):
+        self.coffee = coffee
+
+    def cost(self):
+        return self.coffee.cost() + 1  # Adding cost of sugar
+
+# Usage
+basic_coffee = Coffee()
+coffee_with_milk = MilkDecorator(basic_coffee)
+coffee_with_milk_and_sugar = SugarDecorator(coffee_with_milk)
+
+print(coffee_with_milk_and_sugar.cost())  # Output: 8 (5 + 2 + 1)
+
+✅ When to use?
+
+When working with legacy code that doesn’t match the required interface.
+When integrating third-party libraries with different method names.
+..................................................
+
+2. Decorator Pattern (Enhancing Functionality)
+The Decorator Pattern allows behavior to be added to an object dynamically without modifying its structure.
+
+# Base class
+class Coffee:
+    def cost(self):
+        return 5  # Base price of coffee
+
+# Decorator class
+class MilkDecorator:
+    def __init__(self, coffee):
+        self.coffee = coffee
+
+    def cost(self):
+        return self.coffee.cost() + 2  # Adding milk cost
+
+# Decorator class
+class SugarDecorator:
+    def __init__(self, coffee):
+        self.coffee = coffee
+
+    def cost(self):
+        return self.coffee.cost() + 1  # Adding sugar cost
+
+# Usage
+coffee = Coffee()
+print(coffee.cost())  # Output: 5
+
+coffee_with_milk = MilkDecorator(coffee)
+print(coffee_with_milk.cost())  # Output: 7
+
+coffee_with_milk_sugar = SugarDecorator(coffee_with_milk)
+print(coffee_with_milk_sugar.cost())  # Output: 8
+✅ When to use?
+
+When extending functionalities dynamically without modifying existing code.
+Useful in GUI design, logging, and authentication systems.
+
+.....................................................
+3. Proxy Pattern (Controlling Access)
+The Proxy Pattern is used to provide controlled access to another object. It can add security, logging, or lazy initialization.
+
+# Actual class
+class RealImage:
+    def __init__(self, filename):
+        self.filename = filename
+        self.load_image()  # Loading is costly, so proxy can help
+
+    def load_image(self):
+        print(f"Loading image {self.filename}...")
+
+    def display(self):
+        print(f"Displaying {self.filename}")
+
+# Proxy class
+class ImageProxy:
+    def __init__(self, filename):
+        self.filename = filename
+        self.real_image = None  # Lazy loading
+
+    def display(self):
+        if self.real_image is None:
+            self.real_image = RealImage(self.filename)  # Load only when needed
+        self.real_image.display()
+
+# Usage
+image = ImageProxy("test.jpg")
+image.display()  # Loads and displays image
+image.display()  # Only displays (no loading again)
+
+✅ When to use?
+
+When loading large objects is expensive and we want to defer it until necessary.
+Used in virtual proxies, security proxies, and caching.

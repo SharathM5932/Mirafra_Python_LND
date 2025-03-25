@@ -1,0 +1,60 @@
+keyword variable-length arguments allow you to pass a variable number of keyword arguments to a function. 
+This is achieved using the **kwargs
+
+def greet(**k):
+    for key, value in k.items():
+        print(f"{key}: {value}")
+
+greet(name="Alice", age=25, city="New York")
+............................................
+def introduce(greeting="Hello", **k):
+    print(greeting)
+    for key, value in k.items():
+        print(f"{key}: {value}")
+
+introduce(greeting="Hi", name="Bob", hobby="Reading")
+
+.................................
+def mixed_function(*args, **k):
+    print("Positional arguments:", args)
+    print("Keyword arguments:", k)
+
+mixed_function(1, 2, 3, name="Dave", city="Seattle")
+
+....................................
+def set_config(**k):
+    default_config = {"theme": "light", "notifications": True, "volume": 50}
+    # Update default config with any user-specified settings
+    default_config.update(k)
+    print(default_config)
+
+set_config(theme="dark", volume=30)
+....................................
+Global variable
+
+x = 10  # Global variable
+
+def modify_global():
+    global x  # Declare that we are using the global variable
+    x = 20
+    print("Modified Global x inside function:", x)
+
+modify_global()
+print("Global x after function call:", x)
+....................................
+# Set a custom recursion limit
+import sys
+print("Current recursion limit:", sys.getrecursionlimit())
+sys.setrecursionlimit(1500)
+
+def meet():
+    print('Meeting at 2PM')
+    meet()
+    
+meet()
+
+#Caution: Setting sys.setrecursionlimit() too high may lead to stack overflow or crash the program. Kindly reset it back:
+sys.setrecursionlimit(996)
+
+
+

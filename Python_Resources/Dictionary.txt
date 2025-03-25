@@ -1,0 +1,29 @@
+help('keywords')
+menu={'idli':1, 'dosa':2, 'IDLY':3}
+print(menu)
+print(menu['dosa'])
+menu1=menu.copy()
+print(menu1)
+menu.update({"pizza":4})
+del menu['dosa']
+print(list(menu.items()))
+#or
+print(menu.items())
+print(len(menu))
+print(type(menu))
+print(str(menu))
+print(menu.keys())
+print(menu.values())
+#ex:for(i=0;i<5;i++)
+for key in list(menu.keys()):
+    if key in list(menu1.keys()):
+        print(True)
+    else:
+        print(False)
+menu2=list(menu.keys())
+menu2.sort()
+for s in menu2:
+    print(":".join((s,str(menu[s]))))
+    
+
+

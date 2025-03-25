@@ -1,0 +1,55 @@
+Pre- and Post-Test Hooks in Tox
+Pre- and post-test hooks in Tox are commands that run before and after your test execution. These hooks are useful for setting up the environment, preparing data, and cleaning up after tests.
+
+Example Scenario
+Pre-test hook: Create a sample data file (dee.py) before running the tests.
+Post-test hook: Clean up temporary files after the tests.
+----------------------------
+Explanation:
+commands_pre: Runs before the tests (creates temp_data.txt).
+commands: Runs the actual test suite.
+commands_post: Runs after the tests (deletes temp_data.txt).
+---------------------------
+pip install pytest
+pip install tox
+------------------------
+Step 1: Create scripts/setup_data.py (don't modify file or folder name)
+This script creates a temporary file before running the tests.
+
+# scripts/setup_data.py
+with open("temp_data.txt", "w") as f:
+    f.write("Temporary test data\n")
+print("Pre-test setup: temp_data.txt created")
+
+---------------------------
+Step 2:
+# tests/test_sample.py
+def test_dummy():
+    assert 1 == 1
+------------------------------
+
+Step 3: Define tox.ini with Pre- and Post-Test Hooks
+Modify your tox.ini file to run the pre-test setup and post-test cleanup.
+
+#tox.ini
+
+[tox]
+envlist = py311
+
+[testenv]
+deps =
+    pytest
+
+commands_pre =
+    python scripts/setup_data.py  # Pre-test hook (runs before tests)
+
+commands =
+    pytest tests/  # Runs the tests
+
+commands_post =
+    python -c "import os; os.remove('temp_data.txt') if os.path.exists('temp_data.txt') else None"
+
+-----------------------------------
+
+Step 4: Run Tox in terminal
+tox

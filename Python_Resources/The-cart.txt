@@ -1,0 +1,42 @@
+The cart
+Sujay is a junior developer who has been assigned with a simple task of writing a program display the item present in the cart.
+Initially the program should display the list of items is has and let the customer to choose the product from it. If the product name entered is in the list of products only by then it should ask the quantity of the product. In case of quantity entered is not zero or less than that, only by then it should take the customer to the cart and display the product details. To protect the code from being hacked Sujay should also use Abstract class method in the program.
+Please help Sujay to write a program for the above scenario.
+Data to be stored:
+
+Sample case 1:
+Product:Price in Rs.
+Sugar:50
+Rice:55
+Wheat flour:55
+Toor dal:150
+Rava:70
+Enter the item name to add it to the cart:Sugar
+Enter the quantity in Kgs:2
+Cart:
+Product: Quantity: Price in Rs.
+Sugar: 2: 100
+Thank you
+
+Sample case 2:
+Product:Price in Rs.
+Sugar:50
+Rice:55
+Wheat flour:55
+Toor dal:150
+Rava:70
+Enter the item name to add it to the cart:abc
+Please enter the existing product's name in the list
+
+Sample case 3:
+Product:Price in Rs.
+Sugar:50
+Rice:55
+Wheat flour:55
+Toor dal:150
+Rava:70
+Enter the item name to add it to the cart:Toor dal
+Enter the quantity in Kgs:0
+Thank you
+
+

@@ -1,0 +1,47 @@
+def dee():
+    print("hi")
+    print("hello")
+dee()
+-----------------------
+#Arguments
+
+def pow(x,y=0):
+    z=x**y
+    #print(z)
+    #print(x**y)
+    #return x**y
+print(pow(3,4))
+------------------------
+#Multiple Arguments
+
+def a1(*dee):
+    print(dee)
+
+a1(1.1,2,3,4,5,6,5.7)
+
+-------------------------
+#Return
+
+def sq(x):
+    return x*x
+
+print(sq(4))
+-------------------------
+#Multiple Return
+
+def addmul(x,y):
+    a=x+y
+    b=x*y
+    return a,b
+
+add=addmul(5,4)
+mul=addmul(y=4,x=2)
+print(add,mul)
+----------------------------
+#recursive function
+#factorial 5=5*4*3*2*1
+def fact(n):#0
+    if n==0: return 1
+    return n*fact(n-1)#5*4*3*2*1*1
+print(fact(5))
+

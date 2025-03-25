@@ -1,0 +1,88 @@
+Pattern matching in Python can be implemented using various algorithms, with one of the most common being the Naive Pattern Matching Algorithm. However, for more efficient matching, you can also use Knuth-Morris-Pratt (KMP), Rabin-Karp, and Boyer-Moore algorithms.
+
+Here’s an overview of a few common pattern matching algorithms:
+
+1. Naive Pattern Matching Algorithm
+The naive approach checks all possible positions in the text where the pattern could match. This has a time complexity of O(n * m), where n is the length of the text and m is the length of the pattern.
+
+python
+Copy
+Edit
+def naive_pattern_matching(text, pattern):
+    n = len(text)
+    m = len(pattern)
+    
+    for i in range(n - m + 1):
+        if text[i:i + m] == pattern:
+            print(f"Pattern found at index {i}")
+            
+# Example usage:
+text = "AABAACAADAABAABA"
+pattern = "AABA"
+naive_pattern_matching(text, pattern)
+
+.................................................................
+2. Knuth-Morris-Pratt (KMP) Algorithm
+The KMP algorithm improves the time complexity by preprocessing the pattern into a partial match table (also known as the "failure function"). The time complexity is O(n + m).
+
+def KMP_pattern_matching(text, pattern):
+    def build_partial_match_table(pattern):
+        m = len(pattern)
+        table = [0] * m
+        j = 0
+        
+        for i in range(1, m):
+            while j > 0 and pattern[i] != pattern[j]:
+                j = table[j - 1]
+            if pattern[i] == pattern[j]:
+                j += 1
+                table[i] = j
+        return table
+
+    n = len(text)
+    m = len(pattern)
+    table = build_partial_match_table(pattern)
+    j = 0
+    
+    for i in range(n):
+        while j > 0 and text[i] != pattern[j]:
+            j = table[j - 1]
+        if text[i] == pattern[j]:
+            j += 1
+        if j == m:
+            print(f"Pattern found at index {i - m + 1}")
+            j = table[j - 1]
+
+# Example usage:
+text = "AABAACAADAABAABA"
+pattern = "AABA"
+KMP_pattern_matching(text, pattern)
+
+.....................................................
+3. Rabin-Karp Algorithm
+The Rabin-Karp algorithm uses hashing to compare the pattern and the substring of the text. It has a time complexity of O(n + m) on average but can degrade to O(n * m) in the worst case.
+
+def rabin_karp(text, pattern):
+    def hash_value(s):
+        return sum(ord(c) for c in s)
+    
+    n = len(text)
+    m = len(pattern)
+    pattern_hash = hash_value(pattern)
+    text_hash = hash_value(text[:m])
+    
+    for i in range(n - m + 1):
+        if pattern_hash == text_hash and text[i:i + m] == pattern:
+            print(f"Pattern found at index {i}")
+        if i < n - m:
+            text_hash = hash_value(text[i + 1:i + m + 1])
+
+# Example usage:
+text = "AABAACAADAABAABA"
+pattern = "AABA"
+rabin_karp(text, pattern)
+..............................................................
+4. Boyer-Moore Algorithm
+The Boyer-Moore algorithm is more efficient in practice for longer patterns, especially when the alphabet is large. It preprocesses the pattern to create two arrays: the bad character table and the good suffix table.
+
+You can find implementations for Boyer-Moore in libraries or write a custom one, but it’s more complex than the other algorithms.

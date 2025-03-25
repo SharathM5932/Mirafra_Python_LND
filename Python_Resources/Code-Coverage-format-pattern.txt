@@ -1,0 +1,127 @@
+Code Coverage/format/pattern (e.g pylint,isort,pytest-cov) 
+#1. pytest-cov already covered.
+
+2. Code Formatting (black): black automatically formats Python code for consistency.
+
+#Example (Before Formatting)
+
+def add(a,b): return a+b
+---------------------------------
+
+#in terminal
+pip install black
+black dee.py
+---------------------------------
+#Formatted Code (After black)
+
+def add(a, b):
+    return a + b
+.............................
+3. Code Pattern/Style Checking (pylint): pylint analyzes Python code for errors and style violations.
+
+#Example (bad_code.py)
+
+def add(a,b): 
+ return a+b
+---------------------------------
+
+#in terminal
+pip install pylint
+pylint dee.py
+---------------------------------
+bad_code.py:1:0: C0304: Final newline missing (missing-final-newline)
+bad_code.py:1:0: C0326: Exactly one space required after comma (bad-whitespace)
+bad_code.py:2:1: W1911: Indentation contains mixed spaces and tabs (mixed-indentation)
+................................
+4. Import Sorting (isort): isort automatically sorts imports.
+
+#Example (Before isort)
+
+import sys
+import os
+import numpy as np
+import pandas as pd
+---------------------------------
+#in terminal
+pip install isort
+isort dee.py
+-------------------------------
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+.....................................
+YAPF (Yet Another Python Formatter)
+YAPF reformats Python code to make it more readable while maintaining logical correctness.
+
+def add(a,b): return a+b
+def subtract(a,  b ):
+     return a   -   b
+-------------------------
+pip install yapf
+yapf -i dee.py
+------------------
+#Formatted Output
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+...............................
+AutoPEP8
+AutoPEP8 automatically fixes Python code to follow PEP 8 style guidelines.
+
+def multiply(x,y):return x*y
+--------------------------
+pip install autopep8
+autopep8 --in-place dee.py
+#or
+autopep8 --diff dee.py
+
+----------------
+#Formatted Output
+def multiply(x, y) : return x * y
+........................................
+Flake8 
+Flake8 is a lightweight tool that checks for PEP 8 violations, complexity issues, and syntax errors.
+
+def multiply(x,y):return x*y
+--------------------------
+pip install flake8
+flake8 dee.py
+#To ignore specific errors:
+flake8 --ignore=E231 dee.py
+.....................................
+
+MyPy 🏗️ (Static Type Checker)
+MyPy checks Python code for type errors based on type hints.
+
+def greet(name: str) -> str:
+    return "Hello, " + name
+
+--------------------------
+
+pip install mypy
+mypy dee.py
+
+my_script.py:4: error: Argument 1 to "greet" has incompatible type "int"; expected "str"
+..............................
+4. Prospector 🔥 (Multi-tool Analyzer)
+Prospector runs multiple analysis tools (Pylint, MyPy, etc.) at once.
+
+pip install prospector
+prospector dee.py
+Prospector combines Flake8, Pylint, and MyPy into one report.
+..................................
+Pysa 🛡️ (Security Analyzer)
+Pysa is a security-focused static analysis tool (used in Facebook/Meta projects).
+
+
+pip install pyre-check
+pyre analyze
+It detects security issues like SQL injection and XSS attacks.
+

@@ -1,0 +1,55 @@
+#debug and warning in logging
+import logging
+def add(x,y):
+        return x+y
+a=5
+b=10
+result=add(a,b)
+logging.debug('Add:',a,'+',b,'=',result)
+#logging.warning('Add: {}+{}={}'.format(a,b,result))
+............................
+#to display o/p
+import logging
+logging.basicConfig(level=logging.DEBUG)
+def add(x,y):
+        return x+y
+
+a=5
+b=10
+result=add(a,b)
+logging.debug('Add: {}+{}={}'.format(a,b,result))
+.......................................................
+#create file and format msg
+import logging
+logging.basicConfig(filename='dee.log', level=logging.DEBUG,
+                    format='%(asctime)s:%(levelname)s:%(message)s')
+def add(x,y):
+        return x+y
+
+a=5
+b=10
+result=add(a,b)
+logging.debug('Add: {}+{}={}'.format(a,b,result))
+---------------------------------
+#logging levels with o/p
+logging.debug("A Debug Logging Message")
+logging.info("A Info Logging Message")
+logging.warning("A Warning Logging Message")
+#WARNING:root:A Warning Logging Message
+logging.error("An Error Logging Message")
+#ERROR:root:An Error Logging Message
+logging.critical("A Critical Logging Message")
+----------------------------------------------
+import logging
+
+# Configure logging
+logging.basicConfig(filename="app.log", level=logging.INFO, 
+                    format="%(asctime)s - %(levelname)s - %(message)s")
+
+# Writing log messages
+logging.info("This is an INFO log message.")
+logging.warning("This is a WARNING log message.")
+logging.error("This is an ERROR log message.")
+
+
+#CRITICAL:root:A Critical Logging Message

@@ -1,0 +1,29 @@
+Suggest products
+Bhaskar is a senior developer who is in charge of developing ecommerce website. Under him some juniors are working to learn the work.
+As you know in any ecommerce website if the customer searches for any product and visits it, 
+
+below that a list of similar, s
+
+uggested products will appear from the same category. Creating this page is a junior developer’s task. Now consider yourself as a junior developer and write a program to do the same.
+Data:
+
+Sample case 1:
+Search:red tshirt
+Item name: red tshirt
+Suggested items for you:
+trending tshirt
+branded tshirt
+cotton tshirt
+
+Sample case 2:
+Search:abc
+No matching item found.
+
+Sample case 3:
+Search:chair
+Item name: chair
+Suggested items for you:
+table
+sofa
+
+

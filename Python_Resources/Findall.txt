@@ -1,0 +1,32 @@
+
+#length
+
+import re
+r="1234567"
+print("match:", len(re.findall('\d',r)))
+---------------------------------------------
+import re
+r="1234567"
+print("match:", len(re.findall('\D',r)))
+-----------------------------------------------
+#Findall
+
+import re
+r="deepthi1, sujata, sudha"
+print("match:",re.findall(r'^\w',r))
+---------------------------------------------------
+import re
+r="deepthi1, sujata, sudha"
+print("match:",re.findall(r'^\w+',r))
+-------------------------------------------------------
+import re
+r1="Deepthi@gmail.com, sthuthi, padma@hotmail.com"
+r2=re.findall(r'[\w\.-]+@[\w\.-]+',r1)
+for i in r2:
+    print(i)
+---------------------------------------------------------
+import re
+r1='mat,rat,sat'
+r2=re.findall('[mrs]at',r1)
+for i in r2:
+    print(i)

@@ -1,0 +1,4 @@
+2025-03-25 23:37:19 - INFO - Priority override: Ambulance detected at direction up at 2025-03-25 23:37:19
+2025-03-25 23:37:53 - INFO - Priority override: Ambulance detected at direction left at 2025-03-25 23:37:53
+2025-03-25 23:38:24 - INFO - Priority override: Ambulance detected at direction left at 2025-03-25 23:38:24
+2025-03-25 23:39:20 - INFO - ----------------------exited----------------------

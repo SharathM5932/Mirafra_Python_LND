@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <form id="max" method="POST">
+        <label for="coupon">Enter Coupon Code:</label>
+        <input type="text" id="coupon" name="coupon">
+        <br>
+        <button type="submit">Apply Coupon</button>
+    </form>
+    <h2>Total Cost: ₹{{ total_cost }}</h2>
+    <div class="button-container">
+        <button id="add-cart">Add to Cart</button>
+        <button id="checkout">Checkout</button>
+    </div>
+    <a id="back" href="/">Back to Home</a>
+</body>
+</html>

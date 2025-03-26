@@ -1,0 +1,9 @@
+Customer name:abhishek
+feedback: good product very cute
+----------------------------------------
+Customer name:kalyan
+feedback: waste of money color got shaded
+----------------------------------------
+Customer name:manish
+feedback: bad
+----------------------------------------

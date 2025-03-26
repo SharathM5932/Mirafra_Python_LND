@@ -1,0 +1,22 @@
+{
+    "employees": [
+        {
+            "id": 1,
+            "name": "Alice",
+            "role": "Software Engineer",
+            "skills": ["Python", "Flask", "Docker"]
+        },
+        {
+            "id": 2,
+            "name": "Bob",
+            "role": "Data Scientist",
+            "skills": ["Python", "pandas", "NumPy"]
+        }
+    ],
+    "company": {
+        "name": "Tech Corp",
+        "location": "San Francisco",
+        "employeesCount": 200
+    },
+    "isHiring": true
+}

@@ -1,0 +1,5 @@
+toy_list=input("Enter the name of products stored in the cotton box: ")
+toys = toy_list.split(", ")
+teddy=list(filter(lambda i:'teddy' in i  ,toys))
+print(f"Dear Surya,\nTotal {len(teddy)} teddies are there. And, here they are:")
+print(teddy)

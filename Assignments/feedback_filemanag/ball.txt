@@ -1,0 +1,6 @@
+Customer name:manish
+feedback: excellent,super
+----------------------------------------
+Customer name:anroop
+feedback: bad experience, ball easily broke while playing
+----------------------------------------

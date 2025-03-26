@@ -1,0 +1,21 @@
+#admin and guest
+from flask import Flask,redirect,url_for
+app=Flask(__name__)
+
+@app.route('/admin')
+def hello():
+    return 'Hello admin!'
+
+@app.route('/guest/<guest>')
+def hello_world(guest):
+    return 'Hello %s as a guest' %guest
+
+@app.route('/user/<name>')
+def hello1(name):
+    if name=='admin':
+        return redirect(url_for('hello'))
+    else: return redirect(url_for('hello_world',guest=name))
+
+
+if __name__=='__main__':
+    app.run(debug=True)
